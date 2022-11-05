@@ -1,2 +1,2 @@
 # OrangeEvolution-Squad30
-Projeto desenvolvido na Hackathon Season 4 do Programa de Formação da FCamara.
+Projeto desenvolvido na Hackathon do Programa de Formação Season 4 da FCamara.
