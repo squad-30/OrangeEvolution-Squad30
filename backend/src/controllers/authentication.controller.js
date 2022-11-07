@@ -1,4 +1,4 @@
-import repository from "../database/repository.js";
+import repository from "../models/authentication.model.js";
 
 export const returnInvalidCredentials = (res) => {
   res.status(401);
