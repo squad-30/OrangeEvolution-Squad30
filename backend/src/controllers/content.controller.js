@@ -35,7 +35,6 @@ export const content = async (req, res) => {
       data.push(content);
     }
     res.status(200);
-
     return res.json(data);
   });
 };

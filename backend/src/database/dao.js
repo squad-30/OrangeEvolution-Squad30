@@ -28,8 +28,8 @@ export default class {
             module_id INTEGER NOT NULL PRIMARY KEY,
             module_title TEXT NOT NULL,
             module_description TEXT NOT NULL,
-            path_id INTEGER NOT NULL,
-            FOREIGN KEY(path_id) REFERENCES path(id))`);
+            module_path_id INTEGER NOT NULL,
+            FOREIGN KEY(module_path_id) REFERENCES path(path_id))`);
 
         // Cria a tabela content, que recebe os dados dos conteúdos da plataforma
         db.run(`
@@ -41,28 +41,28 @@ export default class {
             type TEXT NOT NULL,
             length_min INTEGER NOT NULL,
             link TEXT NOT NULL,
-            module_id INTEGER NOT NULL,
-            FOREIGN KEY(module_id) REFERENCES module(id))`);
+            content_module_id INTEGER NOT NULL,
+            FOREIGN KEY(content_module_id) REFERENCES module(module_id))`);
 
         // Cria a tabela user_path, que recebe os dados do relacionamento do usuário com a trilha
         db.run(`
           CREATE TABLE IF NOT EXISTS user_path (
             user_path_id INTEGER NOT NULL PRIMARY KEY,
-            user_id INTEGER NOT NULL,
-            path_id INTEGER NOT NULL,
+            user_path_user_id INTEGER NOT NULL,
+            user_path_path_id INTEGER NOT NULL,
             progress INTEGER NOT NULL,
-            FOREIGN KEY(user_id) REFERENCES user(id),
-            FOREIGN KEY(path_id) REFERENCES path(id))`);
+            FOREIGN KEY(user_path_user_id) REFERENCES user(user_id),
+            FOREIGN KEY(user_path_path_id) REFERENCES path(path_id))`);
 
         // Cria a tabela user_content, que recebe os dados do relacionamento do usuário com o conteúdo
         db.run(`
             CREATE TABLE IF NOT EXISTS user_content (
               user_content_id INTEGER NOT NULL PRIMARY KEY,
-              user_id INTEGER NOT NULL,
-              content_id INTEGER NOT NULL,
+              user_content_user_id INTEGER NOT NULL,
+              user_content_content_id INTEGER NOT NULL,
               status TEXT NOT NULL,
-              FOREIGN KEY(user_id) REFERENCES user(id),
-              FOREIGN KEY(content_id) REFERENCES content(id))`);
+              FOREIGN KEY(user_content_user_id) REFERENCES user(user_id),
+              FOREIGN KEY(user_content_content_id) REFERENCES content(content_id))`);
       });
       db.close();
     });

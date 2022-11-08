@@ -8,7 +8,9 @@ export default class {
 
   //lista conteudos do módulo
   static async getModuleContent(module_id) {
-    return dao.all("SELECT * FROM content WHERE module_id=?", [module_id]);
+    return dao.all("SELECT * FROM content WHERE content_module_id=?", [
+      module_id,
+    ]);
   }
 
   //lista conteúdos da trilha com infos dos módulos
@@ -26,7 +28,7 @@ export default class {
 
   // lista modulos da trilha
   static async getModulesByPathId(path_id) {
-    return dao.all("SELECT * FROM module WHERE path_id=?", [path_id]);
+    return dao.all("SELECT * FROM module WHERE module_path_id=?", [path_id]);
   }
 
   // encontra trilha por id

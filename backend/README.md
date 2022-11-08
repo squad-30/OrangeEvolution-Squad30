@@ -76,19 +76,19 @@ CREATE TABLE IF NOT EXISTS module (
 module_id INTEGER NOT NULL PRIMARY KEY,
 module_title TEXT NOT NULL,
 module_description TEXT NOT NULL,
-path_id INTEGER NOT NULL,
-FOREIGN KEY(path_id) REFERENCES path(path_id)
+module_path_id INTEGER NOT NULL,
+FOREIGN KEY(module_path_id) REFERENCES path(path_id)
 );
 </pre>
 
 Exemplos de inserts:
 
 <pre>
-INSERT INTO module (module_title, module_description, path_id) VALUES ("", "", 1); // insert sem valores
+INSERT INTO module (module_title, module_description, module_path_id) VALUES ("", "", 1); // insert sem valores
 
-INSERT INTO module (module_title, module_description, path_id) VALUES ("O Início", "Comece seu caminho por aqui", 1);
-INSERT INTO module (module_title, module_description, path_id) VALUES ("Fundamentos de UX(User Experience)", "O básico do UX", 1);
-INSERT INTO module (module_title, module_description, path_id) VALUES ("Fundamentos de UI", "O básico de UI", 1);
+INSERT INTO module (module_title, module_description, module_path_id) VALUES ("O Início", "Comece seu caminho por aqui", 1);
+INSERT INTO module (module_title, module_description, module_path_id) VALUES ("Fundamentos de UX(User Experience)", "O básico do UX", 1);
+INSERT INTO module (module_title, module_description, module_path_id) VALUES ("Fundamentos de UI", "O básico de UI", 1);
 </pre>
 
 ---
@@ -106,17 +106,17 @@ author TEXT NOT NULL,
 type TEXT NOT NULL,
 length_min INTEGER NOT NULL,
 link TEXT NOT NULL,
-module_id INTEGER NOT NULL,
-FOREIGN KEY(module_id) REFERENCES module(module_id)
+content_module_id INTEGER NOT NULL,
+FOREIGN KEY(content_module_id) REFERENCES module(module_id)
 );
 </pre>
 
 Exemplos de inserts:
 
 <pre>
-INSERT INTO content (content_title, content_description, author, type, length_min, link, module_id) VALUES ("","","","",1,"",1); // insert sem valores
+INSERT INTO content (content_title, content_description, author, type, length_min, link, content_module_id) VALUES ("","","","",1,"",1); // insert sem valores
 
-INSERT INTO content (content_title, content_description, author, type, length_min, link, module_id) VALUES ("Migração de Carreira","Como funciona migração de carreira?","Orange Juice","Artigo",6,"https://medium.com/orangejuicefc/guia-definitivo-de-como-migrar-para-ux-design-5-passos-para-virar-um-ux-1675f71796b4",1);
+INSERT INTO content (content_title, content_description, author, type, length_min, link, content_module_id) VALUES ("Migração de Carreira","Como funciona migração de carreira?","Orange Juice","Artigo",6,"https://medium.com/orangejuicefc/guia-definitivo-de-como-migrar-para-ux-design-5-passos-para-virar-um-ux-1675f71796b4",1);
 </pre>
 
 ---
@@ -128,18 +128,18 @@ Código de criação da tabela user_path, que recebe os dados do relacionamento 
 <pre>
 CREATE TABLE IF NOT EXISTS user_path (
 user_path_id INTEGER NOT NULL PRIMARY KEY,
-user_id INTEGER NOT NULL,
-path_id INTEGER NOT NULL,
+user_path_user_id INTEGER NOT NULL,
+user_path_path_id INTEGER NOT NULL,
 progress INTEGER NOT NULL,
-FOREIGN KEY(user_id) REFERENCES user(user_id),
-FOREIGN KEY(path_id) REFERENCES path(path_id)
+FOREIGN KEY(user_path_user_id) REFERENCES user(user_id),
+FOREIGN KEY(user_path_path_id) REFERENCES path(path_id)
 );
 </pre>
 
 Exemplos de inserts:
 
 <pre>
-INSERT INTO user_path (user_id, path_id, progress) VALUES (1,1,1);
+INSERT INTO user_path (user_path_user_id, user_path_path_id, progress) VALUES (1,1,1);
 </pre>
 
 ---
@@ -151,18 +151,18 @@ Código de criação da tabela user_content, que recebe os dados do relacionamen
 <pre>
 CREATE TABLE IF NOT EXISTS user_content (
 user_content_id INTEGER NOT NULL PRIMARY KEY,
-user_id INTEGER NOT NULL,
-content_id INTEGER NOT NULL,
+user_content_user_id INTEGER NOT NULL,
+user_content_content_id INTEGER NOT NULL,
 status TEXT NOT NULL,
-FOREIGN KEY(user_id) REFERENCES user(user_id),
-FOREIGN KEY(content_id) REFERENCES content(user_id)
+FOREIGN KEY(user_content_user_id) REFERENCES user(user_id),
+FOREIGN KEY(user_content_content_id) REFERENCES content(content_id)
 );
 </pre>
 
 Exemplos de inserts:
 
 <pre>
-INSERT INTO user_content (user_id, content_id, status) VALUES (1,1,""); // insert sem valores
+INSERT INTO user_content (user_content_user_id, user_content_content_id, status) VALUES (1,1,""); // insert sem valores
 
-INSERT INTO user_content (user_id, content_id, status) VALUES (1,1,"Concluído");
+INSERT INTO user_content (user_content_user_id, user_content_content_id, status) VALUES (1,1,"Concluído");
 </pre>
