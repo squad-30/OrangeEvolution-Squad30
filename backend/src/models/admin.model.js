@@ -28,7 +28,7 @@ export default class {
     module_id
   ) {
     return dao.run(
-      "INSERT INTO module (content_title, content_description, author, type, length_min, content_module_id) VALUES (?,?,?,?,?,?,?)",
+      "INSERT INTO content (content_title, content_description, author, type, length_min, link, content_module_id) VALUES (?,?,?,?,?,?,?)",
       [title, description, author, type, length, link, module_id]
     );
   }
