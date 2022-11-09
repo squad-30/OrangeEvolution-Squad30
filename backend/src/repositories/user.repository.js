@@ -1,6 +1,6 @@
 import dao from "../database/dao.js";
 
-export default class {
+export class UserRepository {
   // lista todos os usuários
   static async getAllUsers() {
     return dao.all("SELECT * FROM user", []);

@@ -1,38 +1,20 @@
-import dao from "../database/dao.js";
+import database from "../database/dao.js";
 
-export default class {
-  // encontra usuário por id
-  static async getContentById(id) {
-    return dao.get("SELECT * FROM content WHERE content_id=?", [id]);
-  }
-
-  //lista conteudos do módulo
-  static async getModuleContent(module_id) {
-    return dao.all("SELECT * FROM content WHERE content_module_id=?", [
-      module_id,
-    ]);
-  }
-
-  //lista conteúdos da trilha com infos dos módulos
-  static async getPathContent(module_id, path_id) {
-    return dao.all(
-      "SELECT content_id, content_title, content_description, author, type, length_min, link, module_title, path_title FROM content INNER JOIN module ON module.module_id=? INNER JOIN path ON path.path_id=?",
-      [module_id, path_id]
+export class ContentModel {
+  static setupContent() {
+    database.run(
+      `
+      CREATE TABLE IF NOT EXISTS content (
+        content_id INTEGER NOT NULL PRIMARY KEY,
+        content_title TEXT NOT NULL,
+        content_description TEXT NOT NULL,
+        author TEXT NOT NULL,
+        type TEXT NOT NULL,
+        length_min INTEGER NOT NULL,
+        link TEXT NOT NULL,
+        content_module_id INTEGER NOT NULL,
+        FOREIGN KEY(content_module_id) REFERENCES module(module_id))`,
+      []
     );
-  }
-
-  // encontra modulo por id
-  static async getModuleById(id) {
-    return dao.get("SELECT * FROM module WHERE module_id=?", [id]);
-  }
-
-  // lista modulos da trilha
-  static async getModulesByPathId(path_id) {
-    return dao.all("SELECT * FROM module WHERE module_path_id=?", [path_id]);
-  }
-
-  // encontra trilha por id
-  static async getPathById(id) {
-    return dao.get("SELECT * FROM path WHERE path_id=?", [id]);
   }
 }
