@@ -1,7 +1,83 @@
 import repository from "../models/admin.model.js";
 
+// cria conteúdo
+const insertContent = async (req, res) => {
+  const {
+    content_title,
+    content_description,
+    author,
+    type,
+    length_min,
+    link,
+    content_module_id,
+  } = req.body;
+
+  const content = await repository.getModuleContentByLink(
+    link,
+    content_module_id
+  );
+
+  if (!content) {
+    repository.insertContent(
+      content_title,
+      content_description,
+      author,
+      type,
+      length_min,
+      link,
+      content_module_id
+    );
+    res.status(200);
+    return res.json({ msg: "Cadastrado com sucesso" });
+  } else {
+    res.status(400);
+    return res.json({
+      msg: "Já existe um conteúdo no módulo com este link.",
+    });
+  }
+};
+
+// cria módulo
+const insertModule = async (req, res) => {
+  const { module_title, module_description, module_path_id } = req.body;
+
+  const module = await repository.getModuleFromPathByTitle(
+    module_title,
+    module_path_id
+  );
+
+  if (!module) {
+    repository.insertModule(module_title, module_description, module_path_id);
+    res.status(200);
+    return res.json({ msg: "Cadastrado com sucesso" });
+  } else {
+    res.status(400);
+    return res.json({
+      msg: "Já existe um módulo na trilha com este título.",
+    });
+  }
+};
+
+// cria trilha
+const insertPath = async (req, res) => {
+  const { path_title, path_description } = req.body;
+
+  const path = await repository.getPathByTitle(path_title);
+
+  if (!path) {
+    repository.insertPath(path_title, path_description);
+    res.status(200);
+    return res.json({ msg: "Cadastrado com sucesso" });
+  } else {
+    res.status(400);
+    return res.json({
+      msg: "Já existe uma trilha com este título.",
+    });
+  }
+};
+
 // atualiza título ou descrição da trilha
-export const updatePath = async (req, res) => {
+const updatePath = async (req, res) => {
   const { path_id, path_title, path_description } = req.body;
   if (path_title) {
     const path = await repository.getPathByTitle(path_title);
@@ -23,7 +99,7 @@ export const updatePath = async (req, res) => {
 };
 
 // atualiza título ou descrição do módulo
-export const updateModule = async (req, res) => {
+const updateModule = async (req, res) => {
   const { module_id, module_title, module_description, module_path_id } =
     req.body;
 
@@ -53,7 +129,7 @@ export const updateModule = async (req, res) => {
 };
 
 // pode atualizar os campos de título, descrição, autor, tipo, duração e link do conteúdo
-export const updateContent = async (req, res) => {
+const updateContent = async (req, res) => {
   const {
     content_id,
     content_title,
@@ -115,83 +191,57 @@ export const updateContent = async (req, res) => {
 };
 
 // deleta conteúdo
+const deleteContent = async (req, res) => {
+  const content_id = req.body.content_id;
 
-// deleta trilha
+  repository.deleteContentById(content_id);
+
+  res.status(200);
+  return res.json({
+    msg: "Conteúdo excluído com sucesso.",
+  });
+};
 
 // deleta módulo
+const deleteModule = async (req, res) => {
+  const module_id = req.body.module_id;
 
-// cria conteúdo
-export const insertContent = async (req, res) => {
-  const {
-    content_title,
-    content_description,
-    author,
-    type,
-    length_min,
-    link,
-    content_module_id,
-  } = req.body;
+  repository.deleteAllModuleContent(module_id);
+  repository.deleteModuleById(module_id);
 
-  const content = await repository.getModuleContentByLink(
-    link,
-    content_module_id
-  );
-
-  if (!content) {
-    repository.insertContent(
-      content_title,
-      content_description,
-      author,
-      type,
-      length_min,
-      link,
-      content_module_id
-    );
-    res.status(200);
-    return res.json({ msg: "Cadastrado com sucesso" });
-  } else {
-    res.status(400);
-    return res.json({
-      msg: "Já existe um conteúdo no módulo com este link.",
-    });
-  }
+  res.status(200);
+  return res.json({
+    msg: "Módulo excluído com sucesso.",
+  });
 };
 
-// cria módulo
-export const insertModule = async (req, res) => {
-  const { module_title, module_description, module_path_id } = req.body;
+// deleta trilha
+const deletePath = async (req, res) => {
+  const path_id = req.body.path_id;
+  const modules = await repository.getModulesFromPath(path_id);
 
-  const module = await repository.getModuleFromPathByTitle(
-    module_title,
-    module_path_id
-  );
+  modules.map(async (mod) => {
+    const module = await repository.getModuleById(mod.module_id);
+    repository.deleteAllModuleContent(module.module_id);
+  });
 
-  if (!module) {
-    repository.insertModule(module_title, module_description, module_path_id);
-    res.status(200);
-    return res.json({ msg: "Cadastrado com sucesso" });
-  } else {
-    res.status(400);
-    return res.json({
-      msg: "Já existe um módulo na trilha com este título.",
-    });
-  }
+  repository.deletePathModules(path_id);
+  repository.deletePathById(path_id);
+
+  res.status(200);
+  return res.json({
+    msg: "Trilha excluída com sucesso.",
+  });
 };
 
-// cria trilha
-export const insertPath = async (req, res) => {
-  const { path_title, path_description } = req.body;
-
-  const path = await repository.getPathByTitle(path_title);
-
-  if (!path) {
-    repository.insertPath(path_title, path_description);
-    res.status(200);
-    return res.json({ msg: "Cadastrado com sucesso" });
-  } else {
-    res.status(400);
-    return res.json({
-      msg: "Já existe uma trilha com este título.",
-    });
-  }
+export {
+  updatePath,
+  updateModule,
+  updateContent,
+  insertContent,
+  insertModule,
+  insertPath,
+  deleteContent,
+  deleteModule,
+  deletePath,
 };

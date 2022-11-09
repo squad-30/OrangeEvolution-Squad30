@@ -6,6 +6,9 @@ import {
   insertContent,
   insertModule,
   insertPath,
+  deleteContent,
+  deleteModule,
+  deletePath,
 } from "../controllers/admin.controller.js";
 
 const router = Router();
@@ -17,5 +20,9 @@ router.put("/admin/updatecontent", updateContent);
 router.post("/admin/insertpath", insertPath);
 router.post("/admin/insertmodule", insertModule);
 router.post("/admin/insertcontent", insertContent);
+
+router.delete("/admin/deletecontent", deleteContent);
+router.delete("/admin/deletemodule", deleteModule);
+router.delete("/admin/deletepath", deletePath);
 
 export default router;

@@ -38,9 +38,14 @@ export default class {
     return dao.get("SELECT * FROM path WHERE path_title=?", [title]);
   }
 
+  // busca modulo por id
+  static async getModuleById(module_id) {
+    return dao.get("SELECT * FROM module WHERE module_id=?", [module_id]);
+  }
+
   // busca modulos dentro da trilha
   static async getModulesFromPath(path_id) {
-    return dao.get("SELECT * FROM module WHERE module_path_id=?", [path_id]);
+    return dao.all("SELECT * FROM module WHERE module_path_id=?", [path_id]);
   }
 
   // busca modulo dentro da trilha por titulo
