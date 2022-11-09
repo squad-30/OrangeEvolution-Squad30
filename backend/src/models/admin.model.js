@@ -53,10 +53,10 @@ export default class {
 
   // busca conteudo dentro do modulo por link
   static async getModuleContentByLink(link, module_id) {
-    return dao.get("SELECT * FROM content WHERE link=? AND module_path_id=?", [
-      link,
-      module_id,
-    ]);
+    return dao.get(
+      "SELECT * FROM content WHERE link=? AND content_module_id=?",
+      [link, module_id]
+    );
   }
 
   // edita título do conteúdo
@@ -125,7 +125,6 @@ export default class {
 
   // edita título da trilha
   static async updatePathTitle(title, path_id) {
-    console.log("entrou no updatePathTitle");
     return dao.run("UPDATE path SET path_title=? WHERE path_id=?", [
       title,
       path_id,

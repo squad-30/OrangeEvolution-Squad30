@@ -27,14 +27,12 @@ export const updateModule = async (req, res) => {
   const { module_id, module_title, module_description, module_path_id } =
     req.body;
 
-  console.log(req.body);
   if (module_title) {
-    console.log("entrou no if do module");
     const module = await repository.getModuleFromPathByTitle(
       module_title,
       module_path_id
     );
-    console.log(module);
+
     if (!module) {
       repository.updateModuleTitle(module_title, module_id);
       res.status(200);
@@ -55,6 +53,66 @@ export const updateModule = async (req, res) => {
 };
 
 // pode atualizar os campos de título, descrição, autor, tipo, duração e link do conteúdo
+export const updateContent = async (req, res) => {
+  const {
+    content_id,
+    content_title,
+    content_description,
+    author,
+    type,
+    length_min,
+    link,
+    content_module_id,
+  } = req.body;
+
+  if (content_title) {
+    repository.updateContentTitle(content_title, content_id);
+    res.status(200);
+    return res.json({ content_title: content_title });
+  }
+
+  if (content_description) {
+    repository.updateContentDescription(content_description, content_id);
+    res.status(200);
+    return res.json({ content_description: content_description });
+  }
+
+  if (author) {
+    repository.updateContentAuthor(author, content_id);
+    res.status(200);
+    return res.json({ author: author });
+  }
+
+  if (type) {
+    repository.updateContentType(type, content_id);
+    res.status(200);
+    return res.json({ type: type });
+  }
+
+  if (length_min) {
+    repository.updateContentLength(length_min, content_id);
+    res.status(200);
+    return res.json({ length_min: length_min });
+  }
+
+  if (link) {
+    const content = await repository.getModuleContentByLink(
+      link,
+      content_module_id
+    );
+
+    if (!content) {
+      repository.updateContentLink(link, content_id);
+      res.status(200);
+      return res.json({ link: link });
+    } else {
+      res.status(400);
+      return res.json({
+        msg: "Já existe um conteúdo no módulo com este link.",
+      });
+    }
+  }
+};
 
 // deleta trilha
 
