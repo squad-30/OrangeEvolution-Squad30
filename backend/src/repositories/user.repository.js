@@ -1,6 +1,14 @@
 import dao from "../database/dao.js";
 
 export class UserRepository {
+  // insere novo usuário
+  static async insertUser(name, email, password) {
+    return dao.run(
+      "INSERT INTO user (name, email, password, is_admin) VALUES (?,?,?,0)",
+      [name, email, password]
+    );
+  }
+
   // lista todos os usuários
   static async getAllUsers() {
     return dao.all("SELECT * FROM user", []);

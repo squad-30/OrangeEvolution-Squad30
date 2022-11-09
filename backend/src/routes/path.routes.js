@@ -3,8 +3,8 @@ import { PathController } from "../controllers/path.controller.js";
 
 const pathRouter = Router();
 
-pathRouter.post("/insertpath", PathController.insertPath);
-pathRouter.put("/updatepath", PathController.updatePath);
-pathRouter.delete("/deletepath", PathController.deletePath);
+pathRouter.post("/api/path/insertpath", PathController.insertPath);
+pathRouter.put("/api/path/updatepath", PathController.updatePath);
+pathRouter.delete("/api/path/deletepath", PathController.deletePath);
 
 export default pathRouter;

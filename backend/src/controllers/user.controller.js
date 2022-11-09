@@ -24,4 +24,20 @@ export class UserController {
       return UserController.returnInvalidCredentials(res);
     }
   }
+
+  static async register(req, res) {
+    const { name, email, password } = req.body;
+
+    let user = await UserRepository.getUserByEmail(email);
+
+    if (!user) {
+      UserRepository.insertUser(name, email, password);
+
+      res.status(200);
+      return res.json({ msg: "Usuário cadastrado com sucesso." });
+    } else {
+      res.status(400);
+      return res.json({ msg: "Email já cadastrado." });
+    }
+  }
 }
