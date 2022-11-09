@@ -3,8 +3,8 @@ import { ModuleController } from "../controllers/module.controller.js";
 
 const moduleRouter = Router();
 
-moduleRouter.post("/api/module/insertmodule", ModuleController.insertModule);
-moduleRouter.put("/api/module/updatemodule", ModuleController.updateModule);
-moduleRouter.delete("/api/module/deletemodule", ModuleController.deleteModule);
+moduleRouter.post("/api/module/", ModuleController.insertModule);
+moduleRouter.put("/api/module/", ModuleController.updateModule);
+moduleRouter.delete("/api/module/", ModuleController.deleteModule);
 
 export default moduleRouter;
