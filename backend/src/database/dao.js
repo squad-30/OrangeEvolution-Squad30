@@ -71,7 +71,24 @@ export default class {
   static get(stmt, params) {
     return new Promise((res, rej) => {
       openDb().then((db) => {
+        console.log("chegou no get");
         db.get(stmt, params, (error, result) => {
+          if (!result) {
+            return rej(error.message);
+          }
+        }).then((data) => {
+          console.log(data);
+          return res(data);
+        });
+      });
+    });
+  }
+
+  static run(stmt, params) {
+    return new Promise((res, rej) => {
+      openDb().then((db) => {
+        console.log("chegou no run");
+        db.run(stmt, params, (error, result) => {
           if (!result) {
             return rej(error.message);
           }
