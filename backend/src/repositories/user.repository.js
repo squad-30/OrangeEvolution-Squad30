@@ -25,11 +25,16 @@ export class UserRepository {
     return resposta;
   }
 
-  // encotra usuário por email e senha
+  // encontra usuário por email e senha
   static async getUserByEmailAndPassword(email, password) {
     return dao.get("SELECT * FROM user WHERE email=? AND password=?", [
       email,
       password,
     ]);
+  }
+
+  // deleta usuário por id
+  static async deleteUserById(user_id) {
+    return dao.run(`DELETE FROM user WHERE user_id=?`, [user_id]);
   }
 }

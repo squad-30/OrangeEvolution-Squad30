@@ -1,4 +1,6 @@
 import { UserRepository } from "../repositories/user.repository.js";
+import { UserPathRepository } from "../repositories/user_path.repository.js";
+import { UserContentRepository } from "../repositories/user_content.repository.js";
 
 export class UserController {
   static async returnInvalidCredentials(res) {
@@ -10,7 +12,6 @@ export class UserController {
     const { email, password } = req.body;
     let user = await UserRepository.getUserByEmail(email);
 
-    // console.log(user);
     if (!user) {
       console.log("email não existe");
       return UserController.returnInvalidCredentials(res);
@@ -39,5 +40,15 @@ export class UserController {
       res.status(400);
       return res.json({ msg: "Email já cadastrado." });
     }
+  }
+
+  static async delete(req, res) {
+    const { user_id } = req.body;
+    UserContentRepository.deleteUserContentByUserId(user_id);
+    UserPathRepository.deleteUserPathByUserId(user_id);
+    UserRepository.deleteUserById(user_id);
+
+    res.status(200);
+    return res.json({ msg: "Usuário excluído com sucesso." });
   }
 }
