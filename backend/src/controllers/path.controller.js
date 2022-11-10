@@ -11,11 +11,10 @@ export class PathController {
 
     if (!path) {
       PathRepository.insertPath(path_title, path_description);
-      res.status(200);
-      return res.json({ msg: "Cadastrado com sucesso" });
+
+      return res.status(200).json({ msg: "Cadastrado com sucesso" });
     } else {
-      res.status(400);
-      return res.json({
+      return res.status(400).json({
         msg: "Já existe uma trilha com este título.",
       });
     }
@@ -28,18 +27,19 @@ export class PathController {
       const path = await PathRepository.getPathByTitle(path_title);
       if (!path) {
         PathRepository.updatePathTitle(path_title, path_id);
-        res.status(200);
-        return res.json({ path_title: path_title });
+
+        return res.status(200).json({ path_title: path_title });
       } else {
-        res.status(400);
-        return res.json({ msg: "Já existe uma trilha com este título." });
+        return res
+          .status(400)
+          .json({ msg: "Já existe uma trilha com este título." });
       }
     }
 
     if (path_description) {
       PathRepository.updatePathDescription(path_description, path_id);
-      res.status(200);
-      return res.json({ path_description: path_description });
+
+      return res.status(200).json({ path_description: path_description });
     }
   }
 
@@ -56,8 +56,7 @@ export class PathController {
     ModuleRepository.deletePathModules(path_id);
     PathRepository.deletePathById(path_id);
 
-    res.status(200);
-    return res.json({
+    return res.status(200).json({
       msg: "Trilha excluída com sucesso.",
     });
   }

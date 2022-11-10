@@ -9,11 +9,6 @@ export class UserRepository {
     );
   }
 
-  // lista todos os usuários
-  static async getAllUsers() {
-    return dao.all("SELECT * FROM user", []);
-  }
-
   // encontra usuário por id
   static async getUserById(id) {
     return dao.get("SELECT * FROM user WHERE user_id=?", [id]);

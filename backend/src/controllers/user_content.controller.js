@@ -27,15 +27,13 @@ export class UserContentController {
 
       UserPathRepository.updateUserPathProgress(path.path_id, newProgress);
 
-      res.status(200);
-      return res.json({ progress: newProgress });
+      return res.status(200).json({ progress: newProgress });
     } else {
       newProgress--;
 
       UserPathRepository.updateUserPathProgress(path.path_id, newProgress);
 
-      res.status(200);
-      return res.json({ progress: newProgress });
+      return res.status(200).json({ progress: newProgress });
     }
   }
 }

@@ -17,11 +17,9 @@ export class ModuleController {
         module_description,
         module_path_id
       );
-      res.status(200);
-      return res.json({ msg: "Cadastrado com sucesso" });
+      return res.status(200).json({ msg: "Cadastrado com sucesso" });
     } else {
-      res.status(400);
-      return res.json({
+      return res.status(400).json({
         msg: "Já existe um módulo na trilha com este título.",
       });
     }
@@ -40,11 +38,10 @@ export class ModuleController {
 
       if (!module) {
         ModuleRepository.updateModuleTitle(module_title, module_id);
-        res.status(200);
-        return res.json({ module_title: module_title });
+
+        return res.status(200).json({ module_title: module_title });
       } else {
-        res.status(400);
-        return res.json({
+        return res.status(400).json({
           msg: "Já existe um módulo na trilha com este título.",
         });
       }
@@ -52,8 +49,8 @@ export class ModuleController {
 
     if (module_description) {
       ModuleRepository.updateModuleDescription(module_description, module_id);
-      res.status(200);
-      return res.json({ module_description: module_description });
+
+      return res.status(200).json({ module_description: module_description });
     }
   }
 
@@ -64,8 +61,7 @@ export class ModuleController {
     ContentRepository.deleteAllModuleContent(module_id);
     ModuleRepository.deleteModuleById(module_id);
 
-    res.status(200);
-    return res.json({
+    return res.status(200).json({
       msg: "Módulo excluído com sucesso.",
     });
   }

@@ -1,11 +1,14 @@
+import jwt from "jsonwebtoken";
+
 import { UserRepository } from "../repositories/user.repository.js";
 import { UserPathRepository } from "../repositories/user_path.repository.js";
 import { UserContentRepository } from "../repositories/user_content.repository.js";
 
 export class UserController {
   static async returnInvalidCredentials(res) {
-    res.status(401);
-    return res.json({ error: "Email e/ou senha inválidos. Tente novamente." });
+    return res
+      .status(401)
+      .json({ error: "Email e/ou senha inválidos. Tente novamente." });
   }
 
   static async login(req, res) {
@@ -18,8 +21,17 @@ export class UserController {
     }
 
     if (user.email === email && user.password === password) {
-      res.status(200);
-      return res.json({ msg: "Login efetuado com sucesso!" });
+      const secret = process.env.SECRET;
+      const token = jwt.sign(
+        {
+          user_id: user.user_id,
+        },
+        secret
+      );
+
+      return res
+        .status(200)
+        .json({ msg: "Login efetuado com sucesso!", token });
     } else {
       console.log("email não bate com senha");
       return UserController.returnInvalidCredentials(res);
@@ -34,11 +46,9 @@ export class UserController {
     if (!user) {
       UserRepository.insertUser(name, email, password);
 
-      res.status(200);
-      return res.json({ msg: "Usuário cadastrado com sucesso." });
+      return res.status(200).json({ msg: "Usuário cadastrado com sucesso." });
     } else {
-      res.status(400);
-      return res.json({ msg: "Email já cadastrado." });
+      return res.status(400).json({ msg: "Email já cadastrado." });
     }
   }
 
@@ -47,8 +57,7 @@ export class UserController {
 
     UserRepository.updateUser(user_id, name, email, password);
 
-    res.status(200);
-    return res.json({ msg: "Perfil editado com sucesso." });
+    return res.status(200).json({ msg: "Perfil editado com sucesso." });
   }
 
   static async delete(req, res) {
@@ -57,7 +66,39 @@ export class UserController {
     UserPathRepository.deleteUserPathByUserId(user_id);
     UserRepository.deleteUserById(user_id);
 
-    res.status(200);
-    return res.json({ msg: "Usuário excluído com sucesso." });
+    return res.status(200).json({ msg: "Usuário excluído com sucesso." });
+  }
+
+  static async checkToken(req, res, next) {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
+
+    if (!token) {
+      return res.status(401).json({ msg: "Acesso negado." });
+    }
+
+    try {
+      const secret = process.env.SECRET;
+      jwt.verify(token, secret);
+    } catch (error) {
+      res.status(400).json({ msg: "Token inválido." });
+    }
+    next();
+  }
+
+  static async getUserById(req, res) {
+    const user_id = req.params.user_id;
+
+    const user = await UserRepository.getUserById(user_id);
+
+    if (!user) {
+      return res.status(404).json({ msg: "Usuário não existe!" });
+    }
+
+    return res.status(200).json({
+      user_id: user.user_id,
+      name: user.name,
+      is_admin: user.is_admin,
+    });
   }
 }

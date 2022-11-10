@@ -28,8 +28,7 @@ export class UserPathController {
       });
     });
 
-    res.status(200);
-    return res.json({
+    return res.status(200).json({
       msg: "Relacionamento de trilha com usuário feito com sucesso.",
     });
   }

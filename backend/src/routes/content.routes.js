@@ -1,11 +1,16 @@
 import { Router } from "express";
 import { ContentController } from "../controllers/content.controller.js";
+import { UserController } from "../controllers/user.controller.js";
 
-const router = Router();
+const contentRouter = Router();
 
-router.get("/api/content/", ContentController.getContent);
-router.post("/api/content/", ContentController.insertContent);
-router.put("/api/content/", ContentController.updateContent);
-router.delete("/api/content/", ContentController.deleteContent);
+contentRouter.get(
+  "/api/content/:path_id",
+  UserController.checkToken,
+  ContentController.getContent
+);
+contentRouter.post("/api/content/", ContentController.insertContent);
+contentRouter.put("/api/content/", ContentController.updateContent);
+contentRouter.delete("/api/content/", ContentController.deleteContent);
 
-export default router;
+export default contentRouter;

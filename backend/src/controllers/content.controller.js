@@ -4,15 +4,14 @@ import { ModuleRepository } from "../repositories/module.repository.js";
 
 export class ContentController {
   static async getContent(req, res) {
-    const req_path_id = req.body.path.path_id;
+    const req_path_id = req.params.path_id;
 
     //seleciona trilha
     const path = await PathRepository.getPathById(req_path_id);
 
     // verifica existência da trilha
     if (!path) {
-      res.status(404);
-      return res.json({ msg: "Trilha não existente." });
+      return res.status(404).json({ msg: "Trilha não existente." });
     }
 
     // lista modulos da trilha
@@ -20,8 +19,9 @@ export class ContentController {
 
     // verifica se existem modulos na trilha
     if (modules.length < 1) {
-      res.status(404);
-      return res.json({ msg: "Nenhum módulo cadastrado na trilha" });
+      return res
+        .status(404)
+        .json({ msg: "Nenhum módulo cadastrado na trilha" });
     }
     // erro para baixo v
 
@@ -39,8 +39,7 @@ export class ContentController {
         );
         data.push(content);
       }
-      res.status(200);
-      return res.json(data);
+      return res.status(200).json(data);
     });
   }
 
@@ -71,11 +70,10 @@ export class ContentController {
         link,
         content_module_id
       );
-      res.status(200);
-      return res.json({ msg: "Cadastrado com sucesso" });
+
+      return res.status(200).json({ msg: "Cadastrado com sucesso" });
     } else {
-      res.status(400);
-      return res.json({
+      return res.status(400).json({
         msg: "Já existe um conteúdo no módulo com este link.",
       });
     }
@@ -96,8 +94,8 @@ export class ContentController {
 
     if (content_title) {
       ContentRepository.updateContentTitle(content_title, content_id);
-      res.status(200);
-      return res.json({ content_title: content_title });
+
+      return res.status(200).json({ content_title: content_title });
     }
 
     if (content_description) {
@@ -111,20 +109,20 @@ export class ContentController {
 
     if (author) {
       ContentRepository.updateContentAuthor(author, content_id);
-      res.status(200);
-      return res.json({ author: author });
+
+      return res.status(200).json({ author: author });
     }
 
     if (type) {
       ContentRepository.updateContentType(type, content_id);
-      res.status(200);
-      return res.json({ type: type });
+
+      return res.status(200).json({ type: type });
     }
 
     if (length_min) {
       ContentRepository.updateContentLength(length_min, content_id);
-      res.status(200);
-      return res.json({ length_min: length_min });
+
+      return res.status(200).json({ length_min: length_min });
     }
 
     if (link) {
@@ -135,11 +133,10 @@ export class ContentController {
 
       if (!content) {
         ContentRepository.updateContentLink(link, content_id);
-        res.status(200);
-        return res.json({ link: link });
+
+        return res.status(200).json({ link: link });
       } else {
-        res.status(400);
-        return res.json({
+        return res.status(400).json({
           msg: "Já existe um conteúdo no módulo com este link.",
         });
       }
@@ -152,8 +149,7 @@ export class ContentController {
 
     ContentRepository.deleteContentById(content_id);
 
-    res.status(200);
-    return res.json({
+    return res.status(200).json({
       msg: "Conteúdo excluído com sucesso.",
     });
   }
