@@ -42,6 +42,15 @@ export class UserController {
     }
   }
 
+  static async editProfile(req, res) {
+    const { user_id, name, email, password } = req.body;
+
+    UserRepository.updateUser(user_id, name, email, password);
+
+    res.status(200);
+    return res.json({ msg: "Perfil editado com sucesso." });
+  }
+
   static async delete(req, res) {
     const { user_id } = req.body;
     UserContentRepository.deleteUserContentByUserId(user_id);

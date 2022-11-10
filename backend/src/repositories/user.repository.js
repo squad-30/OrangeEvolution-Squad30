@@ -33,6 +33,14 @@ export class UserRepository {
     ]);
   }
 
+  // edita usuário
+  static async updateUser(user_id, name, email, password) {
+    return dao.run(
+      "UPDATE user SET name=?, email=?, password=? WHERE user_id=?",
+      [name, email, password, user_id]
+    );
+  }
+
   // deleta usuário por id
   static async deleteUserById(user_id) {
     return dao.run(`DELETE FROM user WHERE user_id=?`, [user_id]);
