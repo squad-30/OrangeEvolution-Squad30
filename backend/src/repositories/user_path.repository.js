@@ -18,9 +18,17 @@ export class UserPathRepository {
   }
 
   // encontra relacionamento de trilha com usuário por id de usuário
-  static async getUserPathById(user_path_id) {
-    return dao.get(`SELECT * FROM user_path WHERE user_path_id=?`, [
-      user_path_id,
+  static async getUserPath(user_path_user_id, user_path_path_id) {
+    return dao.get(
+      `SELECT * FROM user_path WHERE user_path_user_id=? AND user_path_path_id=?`,
+      [user_path_user_id, user_path_path_id]
+    );
+  }
+
+  // encontra relacionamento de trilha com usuário por id de usuário
+  static async getUserPathsByUserId(user_id) {
+    return dao.all(`SELECT * FROM user_path WHERE user_path_user_id=?`, [
+      user_id,
     ]);
   }
 

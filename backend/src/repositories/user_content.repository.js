@@ -9,6 +9,12 @@ export class UserContentRepository {
     );
   }
 
+  static async getAllUserContentByUserId(user_id) {
+    return dao.all(`SELECT * FROM user_content WHERE user_content_user_id=?`, [
+      user_id,
+    ]);
+  }
+
   // altera o progresso do usuário na trilha
   static async updateUserContentStatus(user_content_id, status) {
     return dao.run(`UPDATE user_content SET status=? WHERE user_content_id=?`, [

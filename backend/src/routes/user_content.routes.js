@@ -7,5 +7,9 @@ userContentRouter.put(
   "/api/user_content/",
   UserContentController.updateUserContentStatus
 );
+userContentRouter.get(
+  "/api/user_content/:user_id",
+  UserContentController.getUserContent
+);
 
 export default userContentRouter;

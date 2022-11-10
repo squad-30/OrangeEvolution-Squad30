@@ -19,7 +19,7 @@ export class UserPathController {
         module.module_id
       );
 
-      moduleContent.some(async (cont) => {
+      moduleContent.map(async (cont) => {
         const content = await ContentRepository.getContentById(cont.content_id);
         UserContentRepository.insertUserContent(
           user_path_user_id,
@@ -31,5 +31,12 @@ export class UserPathController {
     return res.status(200).json({
       msg: "Relacionamento de trilha com usuário feito com sucesso.",
     });
+  }
+
+  static async getUserPaths(req, res) {
+    const user_id = req.params.user_id;
+    const user_paths = await UserPathRepository.getUserPathsByUserId(user_id);
+
+    return res.status(200).json({ user_paths });
   }
 }
