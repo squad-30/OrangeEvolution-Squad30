@@ -101,4 +101,16 @@ export class UserController {
       is_admin: user.is_admin,
     });
   }
+
+  static jwtVerify(req, res) {
+    const token = req.body.token;
+    const secret = process.env.SECRET;
+
+    const verify = jwt.verify(
+      token,
+      secret
+    );
+
+    return res.status(200).json(verify);
+  }
 }

@@ -12,5 +12,6 @@ userRouter.get(
   UserController.checkToken,
   UserController.getUserById
 );
+userRouter.post("/api/user/token", UserController.jwtVerify);
 
 export default userRouter;
