@@ -1,0 +1,242 @@
+/* ===== GLOBAL ===== */
+
+@import url("https://fonts.googleapis.com/css2?family=Bowlby+One&family=Montserrat&display=swap");
+
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  /* Talvez conflite com a color do header/footer. Nesse caso, aumentar a especificidade desses ou distribuir esse color para os elementos mesmo */
+}
+
+body {
+  width: 100%;
+  height: 100vh; /* Mudar pra 100% depois */
+
+  background-color: #f5f5f5;
+
+  font-size: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  color: #000;
+  font-size: 2rem;
+}
+
+.hide {
+  display: none;
+}
+
+/* ===== MAIN ===== */
+
+main {
+  width: min(68.4rem, 80%);
+  /* min-height: 73.4rem; */
+
+  margin-bottom: 5rem;
+  padding: 3rem 0 4.8rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #002140;
+  border-radius: 2rem;
+
+  text-align: center;
+}
+
+main h1 {
+  font-size: 4.8rem;
+  font-family: "Bowlby One", monospace;
+  font-weight: 400;
+  line-height: 7.519rem;
+
+  margin-bottom: 5.5rem;
+}
+
+main img {
+  width: 24.1rem;
+  height: 24.1rem;
+
+  margin-bottom: 6.4rem;
+}
+
+main ul li {
+  font-size: 3.2rem;
+  line-height: 3.901rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  margin-bottom: 2.1rem;
+}
+
+main ul li:nth-child(1) {
+  font-weight: bold;
+  margin-bottom: 2.4rem;
+}
+
+main ul li button {
+  padding: .2rem;
+  border-radius: .5rem;
+
+  transition: 200ms;
+}
+
+main ul li .editing_btn:hover {
+  background-color: hsla(0, 1%, 50%, .4);
+}
+
+main ul li .close_editing_btn:hover {
+  filter: brightness(.5);
+}
+
+main .buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.buttons button {
+  width: fit-content;
+
+  background-color: #ff3200;
+  border-radius: 1.5rem;
+
+  padding: 0.4rem 4.3rem;
+
+  font-size: 3.2rem;
+
+  transition: 300ms;
+}
+
+.buttons button:hover {
+  background-color: #ff7823;
+}
+
+/* =====  MODALS ===== */
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+dialog {
+  width: min(75.2rem, 90%);
+
+  background-color: #002140;
+  border: none;
+  border-radius: 1.5rem;
+
+  margin: auto;
+  padding-inline: 3.2rem;
+}
+
+dialog h3 {
+  font-size: 3.2rem;
+  line-height: 3.901rem;
+  width: 67.9rem;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+}
+
+dialog form .input_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+dialog form .input_wrapper label {
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+dialog form .input_wrapper p {
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+dialog form .input_wrapper input {
+  width: 100%;
+  border: none;
+  border-radius: 0.9rem;
+
+  padding: 1.7rem;
+}
+
+dialog form .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+dialog form .buttons .cancel_button {
+  max-height: 5.7rem;
+  padding: .9rem 4.9rem;
+  border-radius: 3rem;
+}
+
+dialog form .buttons .editing_button,
+dialog form .buttons .delete_button {
+  padding: .6rem 6.2rem;
+  border-radius: 3rem;
+  font-size: 4rem;
+}
+
+dialog .close_btn_wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 2.3rem;
+}
+
+dialog #delete_account_modal .close_btn_wrapper {
+  margin-top: 3.8rem;
+}
+
+/* =====  RESPONSIVE ===== */
+
+/* Conferir depois se isso aqui vai quebrar o header e o footer */
+/* Quebrar pra menor já no 1300 acho */
+
+@media (max-width: 1300px) {
+  /* ===== MAIN ===== */
+
+  /* main {
+    width: min(68.4rem, 80%);
+  } */
+}
