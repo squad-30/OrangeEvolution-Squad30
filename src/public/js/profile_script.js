@@ -1,3 +1,11 @@
+// Verificando se id está no localStorage no momento do acesso a página para o caso de tentativa de acesso por meios não convencionais
+const currentId = localStorage.getItem("user_id");
+
+if(!currentId) {
+    alert("Você não está logado.");
+    window.location.pathname = '/';
+}
+
 // ========== MODALS ==========
 
 // Modais de editar senha e deletar conta
@@ -106,6 +114,16 @@ cancelEditEmailBtn.addEventListener("click", () => {
   // Removendo área para a edição
   profileEmail.classList.remove("hide");
   editEmailInput.classList.add("hide");
+});
+
+// ========== LOGOUT BUTTON ==========
+
+const logoutBtn = document.querySelector("#logout_btn");
+
+logoutBtn.addEventListener("click", () => {
+  localStorage.clear();
+  alert("Você saiu e está sendo redirecionado.");
+  window.location.pathname = '/';
 });
 
 // FAZER ESSE ROLÊ DOS INPUTS E BOTÕES SUMINDO QND CLICAR NO BOTÃO DE CONFIRMAR TBM

@@ -68,9 +68,10 @@ export class UserController {
 
     return res.status(200).json({ msg: "Usuário excluído com sucesso." });
   }
-
+  
+  /*
   static async checkToken(req, res, next) {
-    const authHeader = req.headers["authorization"];
+    const authHeader = req.headers["token"];
     const token = authHeader && authHeader.split(" ")[1];
 
     if (!token) {
@@ -85,6 +86,7 @@ export class UserController {
     }
     next();
   }
+  */
 
   static async getUserById(req, res) {
     const user_id = req.params.user_id;

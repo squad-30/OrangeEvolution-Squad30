@@ -9,7 +9,6 @@ userRouter.put("/api/user/", UserController.editProfile);
 userRouter.delete("/api/user/", UserController.delete);
 userRouter.get(
   "/api/user/:user_id",
-  UserController.checkToken,
   UserController.getUserById
 );
 userRouter.post("/api/user/token", UserController.jwtVerify);

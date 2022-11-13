@@ -6,7 +6,6 @@ const contentRouter = Router();
 
 contentRouter.get(
   "/api/content/:path_id",
-  UserController.checkToken,
   ContentController.getContent
 );
 contentRouter.post("/api/content/", ContentController.insertContent);
