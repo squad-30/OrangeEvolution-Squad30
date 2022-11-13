@@ -25,6 +25,8 @@ loginBtn.addEventListener("click", function click() {
       alert(response.data.msg);
       console.log(email + "" + password);
 
+      window.location.pathname = "/paths";
+
       console.log(response.data.token);
       const token = response.data.token;
 
