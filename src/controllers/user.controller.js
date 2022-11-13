@@ -68,6 +68,19 @@ export class UserController {
 
     return res.status(200).json({ msg: "Usuário excluído com sucesso." });
   }
+
+  static async changePassword(req, res) {
+    const { user_id, name, email, password, new_password } = req.body;
+    let user = await UserRepository.getUserByEmail(email);
+
+    if (user.email === email && user.password === password) {
+     UserRepository.updateUser(user_id, name, email, new_password);
+
+      return res.status(200).json({ msg: "Senha alterada com sucesso!"});
+    }
+
+      return res.status(404).json({msg: "Senha atual informada está incorreta!"});
+  }
   
   /*
   static async checkToken(req, res, next) {
@@ -100,6 +113,7 @@ export class UserController {
     return res.status(200).json({
       user_id: user.user_id,
       name: user.name,
+      email: user.email,
       is_admin: user.is_admin,
     });
   }

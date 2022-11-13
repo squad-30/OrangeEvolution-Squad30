@@ -27,6 +27,7 @@ loginBtn.addEventListener("click", function click() {
 
       console.log(response.data.token);
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('email', email)
       const token = response.data.token;
       
       api.post("/api/user/token", {

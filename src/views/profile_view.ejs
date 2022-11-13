@@ -7,7 +7,10 @@
 
     <title>Meu perfil</title>
 
+    <!-- Duas formas, porque uma é pra qnd estou mexendo com a api rodando, o backend, onde eu setei pra ele já entender o caminho vindo do public. O outro é normal, onde isso de ele entender q está vindo do public n rola, já q está no app.js, no backend -->
     <link rel="stylesheet" href="./css/profile_styles.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
     <script src="./js/profile_script.js" defer></script>
     <!-- <link rel="stylesheet" href="../public/css/profile_styles.css" />
     <script type="module" src="../public/js/profile_script.js" defer></script> -->
@@ -36,7 +39,7 @@
       <div class="content">
         <ul>
           <li class="profile_name">
-            <span> Nome Sobrenome </span>
+            <span></span>
             <input type="text" class="hide" />
             <button class="edit_btn">
               <svg
@@ -84,7 +87,7 @@
             </button>
           </li>
           <li class="profile_email">
-            <span> email@provedor.com </span>
+            <span></span>
             <input type="text" class="hide" />
             <button class="edit_btn">
               <svg
@@ -172,7 +175,7 @@
           <input type="password" name="new_password" id="new_password" />
         </div>
         <div class="input_wrapper">
-          <label for="confirm_new_password">Inserir senha atual *</label>
+          <label for="confirm_new_password">Confirme a nova senha *</label>
           <input
             type="password"
             name="confirm_new_password"
