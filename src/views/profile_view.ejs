@@ -27,8 +27,9 @@
       <div class="content">
         <ul>
           <li class="profile_name">
-            Nome Sobrenome
-            <button class="editing_btn">
+            <span> Nome Sobrenome </span>
+            <input type="text" class="hide" />
+            <button class="edit_btn">
               <svg
                 width="32"
                 height="32"
@@ -52,7 +53,7 @@
                 />
               </svg>
             </button>
-            <button class="close_editing_btn hide">
+            <button class="close_edit_btn hide">
               <svg
                 width="32"
                 height="32"
@@ -65,11 +66,18 @@
                   fill="white"
                 />
               </svg>
+            </button>
+            <button class="confirm_edit_btn hide">
+              <img
+                src="../public/imgs/check.png"
+                alt="Ícone de check mark para confirmação."
+              />
             </button>
           </li>
           <li class="profile_email">
-            email@provedor.com
-            <button class="editing_btn">
+            <span> email@provedor.com </span>
+            <input type="text" class="hide" />
+            <button class="edit_btn">
               <svg
                 width="32"
                 height="32"
@@ -93,7 +101,7 @@
                 />
               </svg>
             </button>
-            <button class="close_editing_btn hide">
+            <button class="close_edit_btn hide">
               <svg
                 width="32"
                 height="32"
@@ -106,11 +114,17 @@
                   fill="white"
                 />
               </svg>
+            </button>
+            <button class="confirm_edit_btn hide">
+              <img
+                src="../public/imgs/check.png"
+                alt="Ícone de check mark para confirmação."
+              />
             </button>
           </li>
         </ul>
         <div class="buttons">
-          <button id="editing_password_btn">Alterar senha</button>
+          <button id="edit_password_btn">Alterar senha</button>
           <button id="delete_account_btn">Excluir conta</button>
         </div>
       </div>
@@ -118,7 +132,7 @@
 
     <!-- MODALS -->
 
-    <dialog id="editing_password_modal">
+    <dialog id="edit_password_modal">
       <div class="close_btn_wrapper">
         <button class="close_btn">
           <svg
@@ -159,7 +173,7 @@
         </div>
         <div class="buttons">
           <button type="button" class="cancel_button">Cancelar</button>
-          <button type="button" class="editing_button">Confirmar</button>
+          <button type="button" class="edit_button">Confirmar</button>
         </div>
       </form>
     </dialog>

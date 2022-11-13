@@ -18,7 +18,7 @@
 
 body {
   width: 100%;
-  height: 100vh; /* Mudar pra 100% depois */
+  height: 100vh;
 
   background-color: #f5f5f5;
 
@@ -53,9 +53,7 @@ input {
 
 main {
   width: min(68.4rem, 80%);
-  /* min-height: 73.4rem; */
 
-  margin-bottom: 5rem;
   padding: 3rem 0 4.8rem 0;
 
   display: flex;
@@ -78,11 +76,20 @@ main h1 {
   margin-bottom: 5.5rem;
 }
 
-main img {
+main header img {
   width: 24.1rem;
   height: 24.1rem;
 
   margin-bottom: 6.4rem;
+}
+
+main .content {
+  width: 65%;
+}
+
+main ul {
+  display: flex;
+  flex-direction: column;
 }
 
 main ul li {
@@ -106,15 +113,29 @@ main ul li button {
   padding: .2rem;
   border-radius: .5rem;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   transition: 200ms;
 }
 
-main ul li .editing_btn:hover {
+main ul li .edit_btn:hover {
   background-color: hsla(0, 1%, 50%, .4);
 }
 
-main ul li .close_editing_btn:hover {
+main ul li .close_edit_btn:hover {
   filter: brightness(.5);
+}
+
+main ul li .confirm_edit_btn img {
+  width: 3.7rem;
+  height: 3.7rem;
+  transition: 200ms;
+}
+
+main ul li .confirm_edit_btn img:hover {
+  filter: brightness(2.5);
 }
 
 main .buttons {
@@ -161,7 +182,7 @@ dialog {
 dialog h3 {
   font-size: 3.2rem;
   line-height: 3.901rem;
-  width: 67.9rem;
+  max-width: 67.9rem;
 }
 
 dialog form {
@@ -187,7 +208,9 @@ dialog form .input_wrapper p {
   line-height: 2rem;
 }
 
-dialog form .input_wrapper input {
+dialog form .input_wrapper input,
+.profile_name input,
+.profile_email input {
   width: 100%;
   border: none;
   border-radius: 0.9rem;
@@ -210,7 +233,7 @@ dialog form .buttons .cancel_button {
   border-radius: 3rem;
 }
 
-dialog form .buttons .editing_button,
+dialog form .buttons .edit_button,
 dialog form .buttons .delete_button {
   padding: .6rem 6.2rem;
   border-radius: 3rem;
@@ -231,12 +254,528 @@ dialog #delete_account_modal .close_btn_wrapper {
 /* =====  RESPONSIVE ===== */
 
 /* Conferir depois se isso aqui vai quebrar o header e o footer */
-/* Quebrar pra menor já no 1300 acho */
 
-@media (max-width: 1300px) {
+@media (max-width: 1327px) {
   /* ===== MAIN ===== */
 
-  /* main {
-    width: min(68.4rem, 80%);
-  } */
+  main {
+    min-height: 55rem;
+    width: min(63.4rem, 80%);
+  }
+    
+  main h1 {
+    font-size: 4rem;
+    margin-bottom: 1.7rem;
+  }
+
+  main header img {
+    width: 18rem;
+    height: 18rem;
+  
+    margin-bottom: 3rem;
+  }
+
+  main ul li {
+    font-size: 2.8rem;
+    line-height: 3rem;
+
+    gap: 1rem;
+  
+    margin-bottom: 2.1rem;
+  }
+  
+  main ul li:nth-child(1) {
+    margin-bottom: 1rem;
+  }
+
+  main .buttons {
+    gap: 1.6rem;
+  }
+
+  .buttons button {
+    padding: 0.4rem 4.3rem;
+  
+    font-size: 2.8rem;
+  }
+
+  /* ===== MODALS ===== */
+
+  dialog {
+    width: min(70.2rem, 90%);
+  }
+
+  dialog h3 {
+    font-size: 2.8rem;
+    line-height: 3rem;
+    max-width: 50rem;
+  }
+
+  dialog form .buttons .cancel_button {
+    max-height: 5.2rem;
+    padding: .6rem 4.5rem;
+  }
+  
+  dialog form .buttons .edit_button,
+  dialog form .buttons .delete_button {
+    padding: .5rem 5.8rem;
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* ===== MAIN ===== */
+
+  main {
+    min-height: 50rem;
+    width: min(53rem, 80%);
+  }
+    
+  main h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  main header img {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  main ul li {
+    font-size: 2.4rem;
+    line-height: 2.5rem;
+
+    gap: .6rem;
+  
+    margin-bottom: 2.1rem;
+  }
+  
+  main ul li:nth-child(1) {
+    margin-bottom: .6rem;
+  }
+
+  .buttons button {
+    padding: 0.4rem 4rem;
+  
+    font-size: 2.4rem;
+  }
+
+  main ul li .edit_btn,
+  main ul li .close_edit_btn {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  main ul li .confirm_edit_btn img {
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+
+  /* ===== MODALS ===== */
+
+  dialog {
+    width: min(63.4rem, 90%);
+  }
+
+  dialog h3 {
+    font-size: 2.4rem;
+    max-width: 50rem;
+  }
+
+  dialog form .buttons .cancel_button {
+    max-height: 5rem;
+    padding: .4rem 4.2rem;
+  }
+  
+  dialog form .buttons .edit_button,
+  dialog form .buttons .delete_button {
+    padding: .5rem 4.5rem;
+    font-size: 2.8rem;
+  }
+
+  dialog form .input_wrapper label {
+    font-size: 1.8rem;
+  }
+  
+  dialog form .input_wrapper p {
+    font-size: 1.4rem;
+  }
+  
+  dialog form .input_wrapper input,
+  .profile_name input,
+  .profile_email input {
+    padding: 1rem 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ===== MAIN ===== */
+
+  main {
+    min-height: 45rem;
+    width: min(45rem, 80%);
+
+    padding: 2rem 0 3rem 0;
+  }
+    
+  main h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+
+  main header img {
+    width: 13rem;
+    height: 13rem;
+  
+    margin-bottom: 2rem;
+  }
+
+  main ul li {
+    font-size: 2rem;
+
+    gap: .6rem;
+  
+    margin-bottom: 2.1rem;
+  }
+  
+  main ul li:nth-child(1) {
+    margin-bottom: .6rem;
+  }
+
+  main ul li input {
+    font-size: 1.8rem;
+  }
+
+  main .buttons {
+    gap: 1.2rem;
+  }
+
+  .buttons button {
+    padding: 0.4rem 2.6rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+  }
+
+  /* ===== MODALS ===== */
+
+  dialog {
+    width: min(56.6rem, 90%);
+  }
+
+  dialog .close_btn svg {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  dialog h3 {
+    font-size: 2.2rem;
+    white-space: wrap;
+  }
+
+  dialog form .buttons .cancel_button {
+    padding: .4rem 3.2rem;
+  }
+  
+  dialog form .buttons .edit_button,
+  dialog form .buttons .delete_button {
+    padding: .5rem 4rem;
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 530px) {
+  /* ===== MAIN ===== */
+
+  main {
+    min-height: 38rem;
+    width: min(45rem, 80%);
+
+    padding: 2rem 0 3rem 0;
+  }
+    
+  main h1 {
+    font-size: 2.4rem;
+    margin-bottom: .6rem;
+  }
+
+  main header img {
+    width: 11rem;
+    height: 11rem;
+  
+    margin-bottom: 1.8rem;
+  }
+
+  main .content {
+    width: 75%;
+  }
+
+  main ul li {
+    font-size: 1.8rem;
+
+    gap: .4rem;
+  
+    margin-bottom: 2rem;
+  }
+  
+  main ul li:nth-child(1) {
+    margin-bottom: .6rem;
+  }
+
+  main ul li input {
+    font-size: 1.6rem;
+  }
+
+  .buttons button {
+    padding: 0.4rem 2.6rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+  }
+
+  main ul li .edit_btn,
+  main ul li .close_edit_btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  main ul li .confirm_edit_btn img {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  /* ===== MODALS ===== */
+
+  dialog {
+    width: min(43rem, 90%);
+  }
+
+  dialog h3 {
+    font-size: 2rem;
+  }
+
+  dialog form .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  dialog form .buttons .cancel_button {
+    padding: .4rem 3rem;
+  }
+  
+  dialog form .buttons .edit_button,
+  dialog form .buttons .delete_button {
+    padding: .5rem 3rem;
+    font-size: 2.2rem;
+  }
+  
+  dialog form .input_wrapper input,
+  .profile_name input,
+  .profile_email input {
+    padding: .8rem 1rem;
+  }
+}
+
+@media (max-width: 340px) {
+  /* ===== MAIN ===== */
+
+  main {
+    min-height: 30rem;
+    width: min(45rem, 90%);
+
+    padding: 2rem 0 1rem 0;
+  }
+    
+  main h1 {
+    font-size: 2rem;
+    line-height: 5rem;
+    margin-bottom: .2rem;
+  }
+
+  main header img {
+    width: 8rem;
+    height: 8rem;
+  
+    margin-bottom: 1.4rem;
+  }
+ 
+  main .content {
+    width: 85%;
+  }
+
+  main ul li {
+    font-size: 1.4rem;
+
+    gap: .1rem;
+  
+    margin-bottom: 2rem;
+  }
+  
+  main ul li:nth-child(1) {
+    margin-bottom: .5rem;
+  }
+
+  main ul li input {
+    font-size: 1.4rem;
+  }
+
+  main .buttons {
+    gap: 1rem;
+  }
+
+  .buttons button {
+    padding: 0.4rem 2.2rem;
+    border-radius: .6rem;
+    font-size: 1.4rem;
+  }
+
+  main ul li .edit_btn,
+  main ul li .close_edit_btn {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  main ul li .confirm_edit_btn img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* ===== MODALS ===== */
+
+  dialog {
+    width: min(43rem, 90%);
+    padding-inline: 2rem;
+  }
+
+  dialog .close_btn svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  dialog h3 {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+
+  dialog form .buttons .cancel_button {
+    padding: .4rem 2rem;
+  }
+  
+  dialog form .buttons .edit_button,
+  dialog form .buttons .delete_button {
+    padding: .3rem 2rem;
+    font-size: 1.8rem;
+  }
+
+  dialog form .input_wrapper label {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+  
+  dialog form .input_wrapper p {
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+  
+  dialog form .input_wrapper input,
+  .profile_name input,
+  .profile_email input {
+    padding: .4rem 1rem;
+    border-radius: 0.4rem;
+  }
+}
+
+@media (max-width: 200px) {
+  /* ===== MAIN ===== */
+    
+  main {
+    min-height: 20rem;
+  }
+
+  main h1 {
+    font-size: 1.6rem;
+    margin-bottom: .1rem;
+  }
+
+  main header img {
+    width: 6rem;
+    height: 6rem;
+  
+    margin-bottom: 1.5rem;
+  }
+ 
+  main .content {
+    width: 90%;
+  }
+
+  main ul li {
+    font-size: 1rem;
+
+    gap: .1rem;
+  
+    margin-bottom: 1rem;
+  }
+  
+  main ul li:nth-child(1) {
+    margin-bottom: .1rem;
+  }
+
+  main ul li input {
+    font-size: 1rem;
+  }
+
+  main .buttons {
+    gap: .5rem;
+  }
+
+  .buttons button {
+    padding: 0.2rem 1.6rem;
+    font-size: 1rem;
+  }
+
+  main ul li .edit_btn,
+  main ul li .close_edit_btn {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  
+  main ul li .confirm_edit_btn img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  /* ===== MODALS ===== */
+
+  dialog {
+    width: min(43rem, 95%);
+    padding-inline: 1rem;
+  }
+
+  dialog .close_btn svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  dialog h3 {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+  }
+  
+  dialog form .buttons .edit_button,
+  dialog form .buttons .delete_button {
+    font-size: 1.4rem;
+  }
+
+  dialog form .input_wrapper label {
+    font-size: 1.2rem;
+    line-height: 1rem;
+  }
+  
+  dialog form .input_wrapper p {
+    font-size: .8rem;
+    line-height: 1rem;
+  }
+  
+  dialog form .input_wrapper input,
+  .profile_name input,
+  .profile_email input {
+    padding: .1rem .5rem;
+  }
 }
