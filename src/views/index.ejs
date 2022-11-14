@@ -1,43 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"> 
+    <script src="js/script.js" defer></script>
+    <title>Orange Evolution</title>   
+</head>
 
-    <title>Orange Evolution | Home</title>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
-    <script type="module" src="./js/home_script.js" defer></script>
-  </head>
-  <body>
-    <h1>Orange Evolution</h1>
-    <h3>(Landing Page)</h3>
+<body>
+    <!------- BACKGROUND ------>
 
-    <form>
-      <h3>Login</h3>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" /><br>
-      <label for="password">Senha:</label>
-      <input type="password" id="password" name="
-      password" />
-      <button type="button" id="loginBtn">Entrar</button>
-    </form>
-    
-    <form>
-      <h3>Cadastre-se</h3>
-      <label for="name">Nome:</label>
-      <input type="text" id="registerName" name="name" /><br>
-      <label for="email">Email:</label>
-      <input type="email" id="registerEmail" name="email" /><br>
-      <label for="password">Senha:</label>
-      <input type="password" id="registerPassword" name="
-      password" />
-      <button type="button" id="registerBtn">Cadastrar</button>
-    </form>
-    
-    <br><br>
-    
-    <button id="aboutBtn">Sobre nós</button>
-  </body>
+    <!--foi colocada a imagem aqui no lugar de background-->
+    <img id="background" src="img/background-utilizado.jpg" alt="">
+
+    <!----------------- MENU -->
+
+    <header id="menu">
+        <!--- menu la no top -->
+        <nav class="menu-content">
+            <ul>
+                <li><a class="menu-nav" href="index.html">home</a></li>
+                <li><a class="menu-nav" href="produtos.html">sobre</a></li>
+                <li><a class="menu-nav" id="open-modal" href="#">entrar</a></li> <!--Depois vou mudaar para o link-->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- -------------- MAIN ------------ -->
+
+    <main id="main">
+        <!--mudar o nome da classe-->
+        <section id="content-header">
+                <!--coloquei dentro de uma tag figure para tratar imagem antes estava
+                na tag img esse id porem no css nao estava estilizando pq estava como 
+                um seletor de class - ou seja nao tinha formatação da imagem-->
+                <figure id="content-header-img">
+                    <img src="img/logoevolution.png" alt="logo orange evolution">
+                </figure>
+                <div> <!-- mudei aqui para dentro do h1--> 
+                    <h1 id="content-header-h1">Evolua sua carreira<br>na tecnologia</h1>
+                </div>
+        </section>
+
+        <h2>Nossas trilhas disponíveis:</h2>
+
+        <section id="content-trails">
+            <div class="card">
+                <div class="card-header">
+                    <figure class="icon" id="header1"> <!--mudar para CARD-ICON-->
+                        <img src="img/icone-dev3.png" alt="icone full stack">
+                    </figure>
+                    <h3 class="card-title" id="header2">Desenvolvedor<br>Full Stack</h3>
+                </div>
+                <p class="card-text">O desenvolvedor full stack é o profissional 
+                    multitarefa que cobre várias frentes na área de TI, pois pode 
+                    trabalhar com diferentes linguagens
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <figure class="icon" id="header1">
+                        <img src="img/icone-ux3.png" alt="icone ux/ui designer">
+                    </figure>
+                    <h3 class="card-title" id="header2">UX/UI<br>Designer</h3>
+                </div>
+                <p class="card-text">O Designer UX UI é o responsável pela idealização 
+                    do produto ou serviço, experiência do usuário e pela parte visual 
+                    do site ou aplicativo
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <figure class="icon" id="header1">
+                        <img src="img/icone-qa3.png" alt="icone quality assurance">
+                    </figure>
+                    <h3 class="card-title" id="header2">Quality Assurance<br>(QA)</h3>
+                </div>
+                <p class="card-text">O QA busca garantir que o produto do cliente seja
+                    entregue em perfeitas condições, respeitando as qualidades 
+                    pretendidas pelo consumidor
+                </p>
+            </div>      
+        </section>
+
+        <!--colocar nome da separacao tbm?-->
+        <button class="content-btn">Acesse o conteúdo</button>
+
+    </main>   
+
+    <!-- -------------- FOOTER ------------ --------------->
+
+    <footer id="footer-content">
+        <div class="footer-content-1">
+            <figure class="logo-fcamara">
+                <img src="img/logo-fcamara.png" alt="logo fcamara">
+            </figure>
+            <p class="footer-content-1-text" >&copy; 2022 FCamara Formação e Consultoria.<br>
+                Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div id="footer-content-2">
+            <div>
+            <p class="footer-content-2-header">Mapa do site</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Home</a></li>
+                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Sobre</a></li>
+                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Página Principal</a></li>
+                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Perfil</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="footer-content-3">
+            <p class="footer-content-3-header">Onde Estamos</p>
+            <!-- tentativa de colocar em tabela -->
+
+            <div id="footer-locations">
+                <div id="footer-location-1">
+                        <p class="footer-endress-1">Matriz</p>
+                        <p class="footer-endress-1">Rua Bela Cintra, 996 - 2º andar Consolação, São Paulo - SP</p>
+                </div>
+                <div id="footer-location-2">
+                    <p class="footer-endress-2">Filial</p>
+                    <p class="footer-endress-2">Praça dos Expedicionários, 19 Sala 22 Gonzaga, Santos - SP</p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!---------------- MODAL -------------------->
+    <section>
+        <!-- faz o fundo ficar opaco-->
+        <div id="fade" class="hide"></div> 
+        
+        <!--aqui entra o modal-->
+        <div id="modal" class="hide">
+            <div class="modal-header">
+                <!-- botao fechar -->
+                <button id="close-modal">&#10006;</button> 
+            </div>
+            <div class="modal-body">
+                <form class="modal-form" action="#" >
+                    <label for="email">Email *</label>
+                    <input type="text" placeholder="Digite seu email" required>
+        
+                    <label for="pass">Senha *</label>
+                    <input type="password" placeholder="Digite sua senha">
+        
+                    <p class="modal-form-p">* Itens obrigatórios</p>
+        
+                    <div id="modal-btn">
+                        <button class="form-btn" id="form-btn-cad" >Cadastrar</button>
+                        <button class="form-btn" id="form-btn-login" type="submit">Entrar</button>
+                    </div>
+                </form>
+            </div>    
+        </div> 
+    </section>
+
+</body>
 </html>
