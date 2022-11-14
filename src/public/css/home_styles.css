@@ -1,0 +1,467 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'montserrat', sans-serif;
+}
+
+#background {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position:fixed;
+    bottom: 0;
+    z-index: -100;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* -------------- MENU ------------------- */ 
+
+#menu {
+    background-color: #FF3200;
+    display: flex;
+    justify-content: center;
+    text-align: end;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.menu-content {
+    width: 1030px;
+}
+
+.menu-nav {
+    margin-left: 2rem;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+li {
+    display: inline-block;
+}
+
+nav a:hover {
+    color: #002140;
+}
+
+/* -------------- MAIN --------------------*/
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#content-header {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    align-items:center;
+    padding: 0.7rem 6rem;
+}
+
+#content-header-img {
+    width: 250px;
+    height: 250px;
+}
+
+#content-header-img img {
+    width: 100%;
+}
+
+#content-header-h1 {
+    display: flex;
+    font-family: 'Bowlby One', monospace;
+    font-size: 2.3rem;
+    text-align: center;
+    padding: 6rem;
+}
+
+
+h2 {
+    font-size: 2.8rem;
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+/* --------------------- CARDS --------------------- */
+
+#content-trails {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    width:  100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #FF3200;
+    border-radius: 0.8rem;
+    border: none;
+    padding: 1rem;
+    width: 320px;
+    height: 340px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 170px;
+}
+
+#header1 {
+    flex-grow: 1;
+}
+
+#header2 {
+    flex-grow: 2;
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+}
+
+.icon img {
+    width: 100%;
+}
+
+.card-text {
+    text-align: left;
+    font-size: 20px;
+    margin-top: 2rem;
+}
+
+.content-btn {
+    background-color: #FF3200;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 1.6rem;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 1.6rem;
+    margin: 3rem 0;   
+    padding: 1.2rem 6rem;
+}
+
+/* --------------- FOOTER -----------------------*/
+#footer-content {
+    display: flex;
+    justify-content: center;
+    background-color: #949AA0;
+    padding: 2rem 6rem;
+    margin-top: 3rem;
+}
+
+.footer-content-1 {
+    display: flex;
+    flex-direction: column;
+    width: 330px;   
+}
+
+.logo-fcamara {
+    width: 240px;
+    height: 50px;
+}
+
+.logo-fcamara img {
+    width: 100%;
+}
+
+.footer-content-1-text {
+    color: #002140;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.footer-content-2-header {
+    color: #000000;
+    font-weight:bold;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.6rem;
+}
+
+.footer-content-2-link {
+    display: flex;
+    flex-direction: column;
+    padding: 0.1rem 0;
+    align-items: center;
+}
+
+.footer-content-2-a {
+    color:#000000;
+}
+
+.footer-content-3-header {
+    color: #000000;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+#footer-locations {
+    display: flex;
+}
+
+#footer-location-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+#footer-location-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+.footer-endress-1,
+.footer-endress-2 {
+    text-align: center;
+    color: #000000;
+    font-size: 1rem;
+}
+
+/* ---------------- MODAL -------------------*/
+
+button {
+    padding: 0.1rem 0.2rem;
+    background-color: #FF3200;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 1rem;    
+}
+
+button:hover {
+    opacity: 1;
+}
+
+#modal {
+    background-color: #002140;
+}
+
+#modal-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 0.5rem;
+}
+
+.form-btn {
+    padding: 0.2rem 1.5rem;
+    border-radius: 0.9rem;
+    max-width: 80%;
+}
+
+#form-btn-cad {
+    width: 130px; 
+    height: 30px;
+}
+
+#form-btn-login {
+    width: 150px; 
+    height: 40px;
+}
+
+label {
+    margin: 0.2rem 0;
+}
+
+#fade,
+#modal {
+    transition: 0.5s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 5;
+}
+
+#modal  {
+    background-color: #002140; 
+    transform: translate(-50%, -50%); 
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+    width: 500px;
+    max-width: 90%;
+    padding: 0.6rem;
+    border-radius: 0.8rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#close-modal {
+    width: 25px;
+    height: 25px;
+}
+
+.modal-form   {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form-p {
+    font-size: 0.6rem;
+    margin: 0.5rem 0;
+}
+
+
+#modal.hide,
+#fade.hide {
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+#modal.hide {
+    top: 0;
+}
+
+
+@media screen and (max-width: 940px) {
+
+    /* ------------ MENU ------------------ */
+    #menu {
+        justify-content: center;
+        text-align: center;
+        font-size: 20px;
+        padding: 0.5rem;
+    }
+
+    .menu-content {
+        width: 100%;
+    }
+    .menu-nav {
+        margin-left: 0;
+        margin: 1rem;
+    }
+
+    /* --------------- MAIN ------------------ */
+    
+    #main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #content-header {
+        display: flex;
+        justify-content: center;
+        gap: 1px; 
+        align-items: center;
+        padding: 0.3rem;
+        flex-direction: column;
+        margin-top: 0.5rem; 
+    }
+    
+    #content-header-img {
+        width: 200px; 
+        height: 250px; 
+    }
+    
+    #content-header-img img {
+        width: 100%;
+    }
+    
+    #content-header-h1 {
+        display: flex;
+        font-family: 'Bowlby One', monospace;
+        font-size: 1.7rem;
+        text-align: center;
+        padding: 0 0.9rem ;
+        margin: 0; 
+    }
+
+    h2 {
+        font-size: 1.3rem; 
+    }
+
+    #content-trails {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        width:  100%;
+    }
+
+    .content-btn {
+        font-size: 1.4rem;
+        margin: 2rem 0; 
+        padding: 0.5rem 1.7rem; 
+        width: 230px;
+    }
+
+    /* --------------- FOOTER ------------------ */
+
+    #footer-content {
+        flex-direction: column;
+        align-items: center; 
+        padding: 1rem 6rem; 
+        margin-top: 3rem; 
+        gap: 40px; 
+    }
+
+    .footer-content-1 {
+        align-items: center; 
+        width: 330px;   
+        margin-top: 1rem;
+    }
+
+    .footer-content-1-text {
+        font-size: 0.8rem; 
+        margin-top: 0.6rem; 
+        text-align: center; 
+    }
+
+    #footer-locations {
+        flex-direction: column;
+    }
+
+    #footer-location-1 {
+        margin-top: 0.9rem;
+    }
+
+    #footer-location-2 {
+        padding: 1rem;
+    }
+
+}
