@@ -1,0 +1,194 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* tira o traço q fica em baixo da palavra */
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'montserrat', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------------- MAIN SOBRE-----------------------*/
+
+/* conteiner texto e logo */
+#about-content {
+    width: 100%;
+    height: 100%;
+
+    /* background-color:aqua; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 10%;
+}
+
+
+/* tratar o conteiner que amarra o texto */
+.about-content-text {
+    max-width: 35rem;
+}
+
+/* trata o texto sobre  */
+.about-content-text p {
+    color: #000000;
+    font-size: 1.1rem;
+    /*margin-top: 0.5rem;*/
+    text-indent: 1.5em; 
+}
+
+
+/* tratar a imagem orange juice */
+.about-content-img {
+    width: 450px;
+} 
+
+.about-content-img img {
+    width: 100%;
+}
+
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    align-items: center;
+}
+
+#about-h1 {
+    font-family: 'Bowlby One', monospace;
+    color: #002140;
+    font-size: 1.7rem;
+    padding-bottom: 3rem;  
+}
+
+#about-h2 {
+    font-family: 'Bowlby One', monospace;
+    color: #002140;
+    padding-top: 2.9rem;
+}
+
+#about-h4 {
+    color: #000000;
+    padding-top: 3rem;
+    font-size: 1.5rem;
+}
+
+/* conteiner lista MUDEI */
+/* #about-conteiner-list {
+    padding: 2rem;
+} */
+
+#about-content-list {
+    padding: 0.2rem;
+}
+#about-conteiner-list {
+    /* padding: 1rem; */
+}
+
+.about-list {
+    color: #000000; /* se nao de certo tem que mudar para o item list */
+    font-size: 1.2rem;
+    line-height: 2.8rem; 
+    /* text-indent: 1.5em;  */
+}
+
+#about-h3 {
+    color: #000000;
+    padding-top: 1.2rem;
+    font-size: 1.5rem;
+}
+
+#icons  {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4rem 0;
+    /* gap: 20px; */
+}
+
+.icon {
+    width: 70px;
+    height: 70px;
+}
+
+.icon img {
+    width: 100%;
+}
+
+/* ------------RESPONSIVIDADE -----------------*/
+
+@media screen and (max-width: 940px) {
+
+    /* ----------------- MAIN RESPONSIVO ------------------*/
+
+    /*  ICONES  */
+    #icons {
+        width: 300px;
+        padding: 2rem;
+        gap: 8px;
+    }
+
+    #icon {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* conteiner texto e logo */
+    #about-content {
+        /* background-color:aqua; */
+        flex-direction: column-reverse;
+        gap: 20px;
+        padding: 2rem;
+    }
+
+
+    /* tratar o conteiner que amarra o texto */
+    .about-content-text {
+        /* max-width: 30rem;  */
+    }
+
+    /* tratar a imagem orange juice */
+    .about-content-img {
+        width: 250px;
+    }
+    
+    #about-h4 {
+        padding-top: 2rem;
+        font-size: 1.2rem;
+    }
+
+
+
+    #about-content-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0.2rem;
+    }        
+    
+    #about-conteiner-list {
+        padding: 1.5rem;
+    }
+
+    .about-list {
+        font-size: 1.2rem;
+        line-height: 2.2rem;
+    }
+
+    #about-h3 {
+        padding-top: 1.2rem;
+        font-size: 1.1rem; 
+    }    
+    
+}
+
