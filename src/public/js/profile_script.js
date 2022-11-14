@@ -49,6 +49,8 @@ const confirmEditEmailBtn = document.querySelector(
 const editNameInput = document.querySelector(".profile_name input");
 const editEmailInput = document.querySelector(".profile_email input");
 
+// Manipulando botões de lápis
+
 editNameBtn.addEventListener("click", () => {
   // Mostrando e ocultando botões
   editNameBtn.classList.add("hide");
@@ -71,6 +73,7 @@ editEmailBtn.addEventListener("click", () => {
   editEmailInput.value = profileEmail.textContent;
 });
 
+// Manipulando botões de cancelar edição
 
 cancelEditNameBtn.addEventListener("click", () => {
   cancelEditNameBtn.classList.add("hide");
@@ -89,6 +92,84 @@ cancelEditEmailBtn.addEventListener("click", () => {
   editEmailInput.classList.add("hide");
 });
 
+// Editando Nome
+
+confirmEditNameBtn.addEventListener("click", () => {
+  const newName = editNameInput.value;
+  
+  api.get(`/api/user/${currentId}`)
+  .then((response) => {
+    // Dados necessários para a requisição de edição
+    const email = response.data.email;
+    const password = response.data.password;
+    
+    api.put('/api/user/', {
+      user_id: currentId,
+      name: newName,
+      email: email,
+      password: password
+    })
+    .then((response) => {
+      setTimeout(() => {
+        alert("Usuário atualizado com sucesso.");
+      }, 150);
+      // Escrevendo e armazenando novo nome com o sucesso
+      profileName.innerHTML = newName;
+      localStorage.setItem("name", newName);
+    })
+    .catch((error) => {
+      alert("Houve um erro. Tente novamente mais tarde.");
+      console.log(error);
+    })
+  })
+
+  // Removendo área input e mostrando o nome, agora atualizado
+  cancelEditNameBtn.classList.add("hide");
+  confirmEditNameBtn.classList.add("hide");
+  editNameBtn.classList.remove("hide");
+  profileName.classList.remove("hide");
+  editNameInput.classList.add("hide");  
+})
+
+// Editando email
+
+confirmEditEmailBtn.addEventListener("click", () => {
+  const newEmail = editEmailInput.value;
+  
+  api.get(`/api/user/${currentId}`)
+  .then((response) => {
+    // Dados necessários para a requisição de edição
+    const name = response.data.name;
+    const password = response.data.password;
+    
+    api.put('/api/user/', {
+      user_id: currentId,
+      name: name,
+      email: newEmail,
+      password: password
+    })
+    .then((response) => {
+      setTimeout(() => {
+        alert("Usuário atualizado com sucesso.");
+      }, 150);
+      // Escrevendo e armazenando novo email com o sucesso
+      profileEmail.innerHTML = newEmail;
+      localStorage.setItem("email", newEmail);
+    })
+    .catch((error) => {
+      alert("Houve um erro. Tente novamente mais tarde.");
+      console.log(error);
+    })
+  })
+
+  // Removendo área input e mostrando o email, agora atualizado
+  cancelEditEmailBtn.classList.add("hide");
+  confirmEditEmailBtn.classList.add("hide");
+  editEmailBtn.classList.remove("hide");
+  profileEmail.classList.remove("hide");
+  editEmailInput.classList.add("hide");  
+})
+
 // ========== MODALS ==========
 
 // Modais de editar senha e deletar conta
@@ -96,8 +177,8 @@ const editPasswordModal = document.querySelector("#edit_password_modal");
 const deleteAccountModal = document.querySelector("#delete_account_modal");
 
 // Botões para abrir modais
-const editPasswordBtn = document.querySelector("#edit_password_btn");
-const deleteAccountBtn = document.querySelector("#delete_account_btn");
+const openEditPasswordModalBtn = document.querySelector("#edit_password_btn");
+const openDeleteAccountModalBtn = document.querySelector("#delete_account_btn");
 
 // Botão para cancelar modal
 const cancelModalBtns = document.querySelectorAll("dialog .cancel_button");
@@ -109,8 +190,8 @@ const closeModalBtns = document.querySelectorAll("dialog .close_btn");
 const modalInputs = document.querySelectorAll("dialog input");
 
 // Funções para abertura dos modais
-editPasswordBtn.addEventListener("click", () => editPasswordModal.showModal());
-deleteAccountBtn.addEventListener("click", () =>
+openEditPasswordModalBtn.addEventListener("click", () => editPasswordModal.showModal());
+openDeleteAccountModalBtn.addEventListener("click", () =>
   deleteAccountModal.showModal()
 );
 
@@ -132,9 +213,9 @@ closeModalBtns.forEach((btn) =>
 
 // ========== ALTERAÇÃO DE SENHA ==========
 
-const changePasswordBtn = document.querySelector("dialog .edit_button");
+const editPasswordBtn = document.querySelector("dialog .edit_button");
 
-changePasswordBtn.addEventListener("click", () => {
+editPasswordBtn.addEventListener("click", () => {
   const currentPassword = document.querySelector("dialog #current_password").value;
   const newPassword = document.querySelector("dialog #new_password").value;
   const newPasswordConfirmed = document.querySelector("dialog #confirm_new_password").value;
@@ -149,9 +230,12 @@ changePasswordBtn.addEventListener("click", () => {
     })
     .then((response) => {
       alert(response.data.msg);
+      editPasswordModal.close();
+      modalInputs.forEach((input) => (input.value = ""));
     })
     .catch((error) => {
-      console.log(error);
+      console.error(error);
+      alert("Houve um erro. Tente novamente.")
     });
   } else {
     alert("As senhas não batem.");

@@ -38,6 +38,6 @@ export class UserRepository {
 
   // deleta usuário por id
   static async deleteUserById(user_id) {
-    return dao.run(`DELETE FROM user WHERE user_id=?`, [user_id]);
+    return dao.run("DELETE FROM user WHERE user_id=?", [user_id]);
   }
 }
