@@ -61,16 +61,40 @@ export class UserController {
   }
 
   static async delete(req, res) {
-    const { user_id } = req.body;
-    UserContentRepository.deleteUserContentByUserId(user_id);
-    UserPathRepository.deleteUserPathByUserId(user_id);
-    UserRepository.deleteUserById(user_id);
+    const { user_id, password } = req.body;
+    const user = await UserRepository.getUserById(user_id);
 
-    return res.status(200).json({ msg: "Usuário excluído com sucesso." });
+    if (!user) {
+      res.status(404).json({ msg: "Usuário não existe" });
+    }
+
+    if (password === user.password) {
+      UserContentRepository.deleteUserContentByUserId(user_id);
+      UserPathRepository.deleteUserPathByUserId(user_id);
+      UserRepository.deleteUserById(user_id);
+
+      return res.status(200).json({ msg: "Usuário excluído com sucesso." });
+    }
+
+    return res.status(404).json({ msg: "Senha incorreta." });
   }
 
+  static async changePassword(req, res) {
+    const { user_id, name, email, password, new_password } = req.body;
+    let user = await UserRepository.getUserByEmail(email);
+
+    if (user.email === email && user.password === password) {
+     UserRepository.updateUser(user_id, name, email, new_password);
+
+      return res.status(200).json({ msg: "Senha alterada com sucesso!"});
+    }
+
+      return res.status(404).json({msg: "Senha atual informada está incorreta!"});
+  }
+  
+  /*
   static async checkToken(req, res, next) {
-    const authHeader = req.headers["authorization"];
+    const authHeader = req.headers["token"];
     const token = authHeader && authHeader.split(" ")[1];
 
     if (!token) {
@@ -85,6 +109,7 @@ export class UserController {
     }
     next();
   }
+  */
 
   static async getUserById(req, res) {
     const user_id = req.params.user_id;
@@ -98,6 +123,8 @@ export class UserController {
     return res.status(200).json({
       user_id: user.user_id,
       name: user.name,
+      email: user.email,
+      password: user.password,
       is_admin: user.is_admin,
     });
   }

@@ -5,15 +5,225 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Perfil</title>
+    <title>Meu perfil</title>
 
-    <script type="module" src="./js/profile_script.js" defer></script>
+    <!-- Duas formas, porque uma é pra qnd estou mexendo com a api rodando, o backend, onde eu setei pra ele já entender o caminho vindo do public. O outro é normal, onde isso de ele entender q está vindo do public n rola, já q está no app.js, no backend -->
+    <link rel="stylesheet" href="./css/profile_styles.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
+    <script src="./js/profile_script.js" defer></script>
+    <!-- <link rel="stylesheet" href="../public/css/profile_styles.css" />
+    <script type="module" src="../public/js/profile_script.js" defer></script> -->
   </head>
   <body>
-    <h1>Meu perfil</h1>
-    <h4>Fulano de tal</h4>
-    <button>Alterar senha</button>
-    <button>Excluir conta</button>
-    <button id="backBtn">Voltar</button>
+    <!-- <div class="page"> -->
+    <header>
+      <!-- Componente de header aqui -->
+    </header>
+
+    <!-- Botão a ser modificado, inserido no componente header -->
+    <button id="logout_btn" style="
+      color: black;
+      position: absolute;
+      top: 5rem;
+    ">SAIR</button>
+    
+    <!-- PERFIL -->
+
+    <main>
+      <header>
+        <h1>Meu perfil</h1>
+        <!-- Se for rolar imagem, setar o alt dinamicamente a partir da req -->
+        <img src="./imgs/foto_perfil.png" alt="" />
+      </header>
+      <div class="content">
+        <ul>
+          <li class="profile_name">
+            <span></span>
+            <input type="text" class="hide" />
+            <button class="edit_btn">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.5875 26.9999H6.00001C5.73479 26.9999 5.48044 26.8945 5.2929 26.707C5.10536 26.5195 5.00001 26.2651 5.00001 25.9999V20.4124C4.99955 20.2825 5.02471 20.1539 5.07404 20.0338C5.12338 19.9136 5.19591 19.8044 5.28751 19.7124L20.2875 4.71239C20.3806 4.61791 20.4915 4.54287 20.6138 4.49165C20.7361 4.44044 20.8674 4.41406 21 4.41406C21.1326 4.41406 21.2639 4.44044 21.3862 4.49165C21.5085 4.54287 21.6195 4.61791 21.7125 4.71239L27.2875 10.2874C27.382 10.3804 27.457 10.4914 27.5082 10.6137C27.5595 10.736 27.5858 10.8673 27.5858 10.9999C27.5858 11.1325 27.5595 11.2638 27.5082 11.3861C27.457 11.5084 27.382 11.6193 27.2875 11.7124L12.2875 26.7124C12.1955 26.804 12.0863 26.8765 11.9661 26.9259C11.846 26.9752 11.7174 27.0003 11.5875 26.9999V26.9999Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M17 8L24 15"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="close_edit_btn hide">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 33 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.9375 0.338867H3.0625C2.34973 0.338867 1.66615 0.620117 1.16215 1.12074C0.658146 1.62137 0.375 2.30037 0.375 3.00836V29.7033C0.375 30.4113 0.658146 31.0903 1.16215 31.5909C1.66615 32.0915 2.34973 32.3728 3.0625 32.3728H29.9375C30.6503 32.3728 31.3338 32.0915 31.8378 31.5909C32.3419 31.0903 32.625 30.4113 32.625 29.7033V3.00836C32.625 2.30037 32.3419 1.62137 31.8378 1.12074C31.3338 0.620117 30.6503 0.338867 29.9375 0.338867ZM22.8324 20.7438C23.0848 20.9969 23.2263 21.3386 23.2263 21.6948C23.2263 22.051 23.0848 22.3928 22.8324 22.6458C22.5756 22.8925 22.2323 23.0304 21.875 23.0304C21.5177 23.0304 21.1744 22.8925 20.9176 22.6458L16.5 18.2412L12.0824 22.6458C11.8256 22.8925 11.4823 23.0304 11.125 23.0304C10.7677 23.0304 10.4244 22.8925 10.1676 22.6458C9.91525 22.3928 9.77369 22.051 9.77369 21.6948C9.77369 21.3386 9.91525 20.9969 10.1676 20.7438L14.602 16.3558L10.1676 11.9679C9.9533 11.7085 9.84379 11.3793 9.86036 11.0442C9.87693 10.7091 10.0184 10.3921 10.2572 10.1549C10.4961 9.91765 10.8152 9.77714 11.1525 9.76068C11.4899 9.74422 11.8213 9.85299 12.0824 10.0658L16.5 14.4705L20.9176 10.0658C21.1787 9.85299 21.5101 9.74422 21.8475 9.76068C22.1848 9.77714 22.5039 9.91765 22.7428 10.1549C22.9816 10.3921 23.1231 10.7091 23.1396 11.0442C23.1562 11.3793 23.0467 11.7085 22.8324 11.9679L18.398 16.3558L22.8324 20.7438Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+            <button class="confirm_edit_btn hide">
+              <img
+                src="./imgs/check.png"
+                alt="Ícone de check mark para confirmação."
+              />
+            </button>
+          </li>
+          <li class="profile_email">
+            <span></span>
+            <input type="text" class="hide" />
+            <button class="edit_btn">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.5875 26.9999H6.00001C5.73479 26.9999 5.48044 26.8945 5.2929 26.707C5.10536 26.5195 5.00001 26.2651 5.00001 25.9999V20.4124C4.99955 20.2825 5.02471 20.1539 5.07404 20.0338C5.12338 19.9136 5.19591 19.8044 5.28751 19.7124L20.2875 4.71239C20.3806 4.61791 20.4915 4.54287 20.6138 4.49165C20.7361 4.44044 20.8674 4.41406 21 4.41406C21.1326 4.41406 21.2639 4.44044 21.3862 4.49165C21.5085 4.54287 21.6195 4.61791 21.7125 4.71239L27.2875 10.2874C27.382 10.3804 27.457 10.4914 27.5082 10.6137C27.5595 10.736 27.5858 10.8673 27.5858 10.9999C27.5858 11.1325 27.5595 11.2638 27.5082 11.3861C27.457 11.5084 27.382 11.6193 27.2875 11.7124L12.2875 26.7124C12.1955 26.804 12.0863 26.8765 11.9661 26.9259C11.846 26.9752 11.7174 27.0003 11.5875 26.9999V26.9999Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M17 8L24 15"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="close_edit_btn hide">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 33 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.9375 0.338867H3.0625C2.34973 0.338867 1.66615 0.620117 1.16215 1.12074C0.658146 1.62137 0.375 2.30037 0.375 3.00836V29.7033C0.375 30.4113 0.658146 31.0903 1.16215 31.5909C1.66615 32.0915 2.34973 32.3728 3.0625 32.3728H29.9375C30.6503 32.3728 31.3338 32.0915 31.8378 31.5909C32.3419 31.0903 32.625 30.4113 32.625 29.7033V3.00836C32.625 2.30037 32.3419 1.62137 31.8378 1.12074C31.3338 0.620117 30.6503 0.338867 29.9375 0.338867ZM22.8324 20.7438C23.0848 20.9969 23.2263 21.3386 23.2263 21.6948C23.2263 22.051 23.0848 22.3928 22.8324 22.6458C22.5756 22.8925 22.2323 23.0304 21.875 23.0304C21.5177 23.0304 21.1744 22.8925 20.9176 22.6458L16.5 18.2412L12.0824 22.6458C11.8256 22.8925 11.4823 23.0304 11.125 23.0304C10.7677 23.0304 10.4244 22.8925 10.1676 22.6458C9.91525 22.3928 9.77369 22.051 9.77369 21.6948C9.77369 21.3386 9.91525 20.9969 10.1676 20.7438L14.602 16.3558L10.1676 11.9679C9.9533 11.7085 9.84379 11.3793 9.86036 11.0442C9.87693 10.7091 10.0184 10.3921 10.2572 10.1549C10.4961 9.91765 10.8152 9.77714 11.1525 9.76068C11.4899 9.74422 11.8213 9.85299 12.0824 10.0658L16.5 14.4705L20.9176 10.0658C21.1787 9.85299 21.5101 9.74422 21.8475 9.76068C22.1848 9.77714 22.5039 9.91765 22.7428 10.1549C22.9816 10.3921 23.1231 10.7091 23.1396 11.0442C23.1562 11.3793 23.0467 11.7085 22.8324 11.9679L18.398 16.3558L22.8324 20.7438Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+            <button class="confirm_edit_btn hide">
+              <img
+                src="./imgs/check.png"
+                alt="Ícone de check mark para confirmação."
+              />
+            </button>
+          </li>
+        </ul>
+        <div class="buttons">
+          <button id="edit_password_btn">Alterar senha</button>
+          <button id="delete_account_btn">Excluir conta</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- MODALS -->
+
+    <dialog id="edit_password_modal">
+      <div class="close_btn_wrapper">
+        <button class="close_btn">
+          <svg
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M29.9375 0.338867H3.0625C2.34973 0.338867 1.66615 0.620117 1.16215 1.12074C0.658146 1.62137 0.375 2.30037 0.375 3.00836V29.7033C0.375 30.4113 0.658146 31.0903 1.16215 31.5909C1.66615 32.0915 2.34973 32.3728 3.0625 32.3728H29.9375C30.6503 32.3728 31.3338 32.0915 31.8378 31.5909C32.3419 31.0903 32.625 30.4113 32.625 29.7033V3.00836C32.625 2.30037 32.3419 1.62137 31.8378 1.12074C31.3338 0.620117 30.6503 0.338867 29.9375 0.338867ZM22.8324 20.7438C23.0848 20.9969 23.2263 21.3386 23.2263 21.6948C23.2263 22.051 23.0848 22.3928 22.8324 22.6458C22.5756 22.8925 22.2323 23.0304 21.875 23.0304C21.5177 23.0304 21.1744 22.8925 20.9176 22.6458L16.5 18.2412L12.0824 22.6458C11.8256 22.8925 11.4823 23.0304 11.125 23.0304C10.7677 23.0304 10.4244 22.8925 10.1676 22.6458C9.91525 22.3928 9.77369 22.051 9.77369 21.6948C9.77369 21.3386 9.91525 20.9969 10.1676 20.7438L14.602 16.3558L10.1676 11.9679C9.9533 11.7085 9.84379 11.3793 9.86036 11.0442C9.87693 10.7091 10.0184 10.3921 10.2572 10.1549C10.4961 9.91765 10.8152 9.77714 11.1525 9.76068C11.4899 9.74422 11.8213 9.85299 12.0824 10.0658L16.5 14.4705L20.9176 10.0658C21.1787 9.85299 21.5101 9.74422 21.8475 9.76068C22.1848 9.77714 22.5039 9.91765 22.7428 10.1549C22.9816 10.3921 23.1231 10.7091 23.1396 11.0442C23.1562 11.3793 23.0467 11.7085 22.8324 11.9679L18.398 16.3558L22.8324 20.7438Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+      </div>
+      <form>
+        <div class="input_wrapper">
+          <label for="current_password">Inserir senha atual *</label>
+          <input
+            type="password"
+            name="current_password"
+            id="current_password"
+          />
+        </div>
+        <div class="input_wrapper">
+          <label for="new_password">Nova senha *</label>
+          <input type="password" name="new_password" id="new_password" />
+        </div>
+        <div class="input_wrapper">
+          <label for="confirm_new_password">Confirme a nova senha *</label>
+          <input
+            type="password"
+            name="confirm_new_password"
+            id="confirm_new_password"
+          />
+          <p>*Ítens obrigatórios</p>
+        </div>
+        <div class="buttons">
+          <button type="button" class="cancel_button">Cancelar</button>
+          <button type="button" class="edit_button">Confirmar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="delete_account_modal">
+      <div class="close_btn_wrapper">
+        <button class="close_btn">
+          <svg
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M29.9375 0.338867H3.0625C2.34973 0.338867 1.66615 0.620117 1.16215 1.12074C0.658146 1.62137 0.375 2.30037 0.375 3.00836V29.7033C0.375 30.4113 0.658146 31.0903 1.16215 31.5909C1.66615 32.0915 2.34973 32.3728 3.0625 32.3728H29.9375C30.6503 32.3728 31.3338 32.0915 31.8378 31.5909C32.3419 31.0903 32.625 30.4113 32.625 29.7033V3.00836C32.625 2.30037 32.3419 1.62137 31.8378 1.12074C31.3338 0.620117 30.6503 0.338867 29.9375 0.338867ZM22.8324 20.7438C23.0848 20.9969 23.2263 21.3386 23.2263 21.6948C23.2263 22.051 23.0848 22.3928 22.8324 22.6458C22.5756 22.8925 22.2323 23.0304 21.875 23.0304C21.5177 23.0304 21.1744 22.8925 20.9176 22.6458L16.5 18.2412L12.0824 22.6458C11.8256 22.8925 11.4823 23.0304 11.125 23.0304C10.7677 23.0304 10.4244 22.8925 10.1676 22.6458C9.91525 22.3928 9.77369 22.051 9.77369 21.6948C9.77369 21.3386 9.91525 20.9969 10.1676 20.7438L14.602 16.3558L10.1676 11.9679C9.9533 11.7085 9.84379 11.3793 9.86036 11.0442C9.87693 10.7091 10.0184 10.3921 10.2572 10.1549C10.4961 9.91765 10.8152 9.77714 11.1525 9.76068C11.4899 9.74422 11.8213 9.85299 12.0824 10.0658L16.5 14.4705L20.9176 10.0658C21.1787 9.85299 21.5101 9.74422 21.8475 9.76068C22.1848 9.77714 22.5039 9.91765 22.7428 10.1549C22.9816 10.3921 23.1231 10.7091 23.1396 11.0442C23.1562 11.3793 23.0467 11.7085 22.8324 11.9679L18.398 16.3558L22.8324 20.7438Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+      </div>
+      <form>
+        <h3>Tem certeza de que deseja excluir a conta?</h3>
+        <div class="input_wrapper">
+          <label for="verify_password">Inserir senha *</label>
+          <input type="password" name="verify_password" id="verify_password" />
+          <p>*Ítens obrigatórios</p>
+        </div>
+        <div class="buttons">
+          <button type="button" class="cancel_button">Cancelar</button>
+          <button type="button" class="delete_button">Excluir conta</button>
+        </div>
+      </form>
+    </dialog>
+
+    <footer>
+      <!-- Componente de footer aqui -->
+    </footer>
+    <!-- </div> -->
   </body>
 </html>

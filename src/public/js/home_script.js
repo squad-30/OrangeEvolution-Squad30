@@ -42,13 +42,18 @@ loginBtn.addEventListener("click", function click() {
       console.log(email + "" + password);
 
       console.log(response.data.token);
+      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('email', email)
       const token = response.data.token;
-
+      
       api.post("/api/user/token", {
         token: token
       })
       .then((response) => {
         console.log(response.data);
+        localStorage.setItem('user_id', response.data.user_id);
+        
+        window.location.pathname = "/paths";
       });
     })
     .catch((error) => {
@@ -56,6 +61,7 @@ loginBtn.addEventListener("click", function click() {
       console.log(error);
       console.log(email + " " + password);
     });
+
 });
 
 registerBtn.addEventListener("click", function click() {
