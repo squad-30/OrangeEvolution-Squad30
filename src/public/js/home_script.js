@@ -1,3 +1,19 @@
+const openModalLink = document.querySelector("#open-modal");
+const openModalButton = document.querySelector("#close-modal");
+const modal = document.querySelector("#modal");
+const fade = document.querySelector("#fade");
+
+const toggleModal = () => {
+    [modal, fade].forEach((el) => el.classList.toggle("hide"));
+};
+
+[openModalLink, openModalButton, fade].forEach((el) => {
+    el.addEventListener("click", () => toggleModal());
+});
+
+
+// Lucyan
+
 const api = axios.create({
   baseURL: "http://localhost:3000",
 });
