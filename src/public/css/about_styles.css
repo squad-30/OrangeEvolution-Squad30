@@ -16,6 +16,10 @@ body {
     height: 100%;
 }
 
+input {
+    color: black;
+}
+
 /* ---------------- MAIN SOBRE-----------------------*/
 
 /* conteiner texto e logo */

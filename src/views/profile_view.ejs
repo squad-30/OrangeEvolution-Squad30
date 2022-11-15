@@ -16,17 +16,7 @@
     <script type="module" src="../public/js/profile_script.js" defer></script> -->
   </head>
   <body>
-    <!-- <div class="page"> -->
-    <header>
-      <!-- Componente de header aqui -->
-    </header>
-
-    <!-- Botão a ser modificado, inserido no componente header -->
-    <button id="logout_btn" style="
-      color: black;
-      position: absolute;
-      top: 5rem;
-    ">SAIR</button>
+    <%- include('./partials/header.ejs') %>
     
     <!-- PERFIL -->
 
@@ -221,9 +211,6 @@
       </form>
     </dialog>
 
-    <footer>
-      <!-- Componente de footer aqui -->
-    </footer>
-    <!-- </div> -->
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>

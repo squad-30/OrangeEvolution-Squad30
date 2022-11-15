@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/sobre.css"> 
-    <script src="js/script.js" defer></script>
+
     <title>Orange Evolution</title>   
+    
+    <link rel="stylesheet" href="./css/about_styles.css"> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
+    <script src="./js/about_script.js" defer></script>
 </head>
 
 <body>
+    <!---------------- HEADER -------------------->
+
+    <%- include('./partials/header.ejs') %>
 
     <!-- ------------- MAIN SOBRE --------------->
 
@@ -33,7 +40,7 @@
                     </p>
                 </div>
                 <figure class="about-content-img">
-                    <img src="img/orange-juice.png" alt="">
+                    <img src="./imgs/orange-juice.png" alt="">
                 </figure>
             </div>
         
@@ -63,22 +70,53 @@
         
         <section id="icons">
             <div class="icon">
-                <a href=""><img src="img/insta-icon.png" alt=""></a>
+                <a href=""><img src="./imgs/insta-icon.png" alt=""></a>
             </div>
             <div class="icon">
-                <a href=""><img src="img/linkedin-icon.png" alt=""></a>
+                <a href=""><img src="./imgs/linkedin-icon.png" alt=""></a>
             </div>
             <div class="icon">
-                <a href=""><img src="img/youtube-icon.png" alt=""></a>
+                <a href=""><img src="./imgs/youtube-icon.png" alt=""></a>
             </div>
             <div class="icon">
-                <a href=""><img src="img/tweet-icon.png" alt=""></a>
+                <a href=""><img src="./imgs/twitter-icon.png" alt=""></a>
             </div>
         </section>
 
 
         
     </main>
+
+    <!---------------- MODAL -------------------->
+    <section>
+        <div id="fade" class="hide"></div> 
+        
+        <div id="modal" class="hide">
+            <div class="modal-header">
+                <button id="close-modal">&#10006;</button> 
+            </div>
+            <div class="modal-body">
+                <form class="modal-form" action="#" >
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required>
+        
+                    <label for="password">Senha *</label>
+                    <input type="password" id="password" />
+        
+                    <p class="modal-form-p">* Itens obrigatórios</p>
+        
+                    <div id="modal-btn">
+                        <button class="form-btn" id="form-btn-cad"  type="button">Cadastrar</button>
+                        <button class="form-btn" id="form-btn-login">Fazer Login</button>
+                    </div>
+                </form>
+            </div>    
+        </div> 
+    </section> 
+
+    <!---------------- FOOTER -------------------->
+
+    <%- include('./partials/footer.ejs') %>
 
 </body>
 </html>

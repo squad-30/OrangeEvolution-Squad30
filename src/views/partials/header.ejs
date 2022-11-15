@@ -1,0 +1,194 @@
+<header id="menu">
+  <nav class="menu-content">
+    <ul>
+      <li><a class="menu-nav" href="/">home</a></li>
+      <li><a class="menu-nav" href="/about">sobre</a></li>
+      <li><a class="menu-nav" id="open-modal" href="#">entrar</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  #menu {
+    width: 100vw;
+
+    background-color: #ff3200;
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    padding: 0.8rem 50px;
+
+    text-align: end;
+    font-size: 20px;
+  }
+
+  .menu-content {
+    width: 100%;
+  }
+
+  .menu-nav {
+    margin-left: 2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+
+    font-weight: bold;
+  }
+  li {
+    display: inline-block;
+  }
+
+  nav a {
+    text-decoration: none;
+    transition: 200ms;
+  }
+
+  nav a:hover {
+    color: #002140;
+  }
+
+  /* ---------------- MODAL -------------------*/
+
+  #modal button {
+    padding: 0.1rem 0.2rem;
+    background-color: #ff3200;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 1rem;
+  }
+
+  #modal button:hover {
+    opacity: 1;
+  }
+
+  #modal {
+    background-color: #002140;
+  }
+
+  #modal-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  .form-btn {
+    padding: 0.2rem 1.5rem;
+    border-radius: 0.9rem;
+    max-width: 80%;
+  }
+
+  #form-btn-cad {
+    width: 130px;
+    height: 30px;
+  }
+
+  #form-btn-login {
+    width: 150px;
+    height: 40px;
+  }
+
+  label {
+    margin: 0.2rem 0;
+  }
+
+  #fade,
+  #modal {
+    transition: 0.5s;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  #fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+  }
+
+  #modal {
+    background-color: #002140;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+    width: 500px;
+    max-width: 90%;
+    padding: 0.6rem;
+    border-radius: 0.8rem;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #close-modal {
+    width: 25px;
+    height: 25px;
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-form-p {
+    font-size: 0.6rem;
+    margin: 0.5rem 0;
+  }
+
+  #modal.hide,
+  #fade.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #modal.hide {
+    top: 0;
+  }
+
+  @media screen and (max-width: 940px) {
+    #menu {
+      justify-content: center;
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+    }
+
+    .menu-content {
+      width: 100%;
+    }
+
+    .menu-nav {
+      margin-left: 0;
+      margin: 1rem;
+    }
+  }
+</style>
+
+<script>
+  if (localStorage.length !== 0) {
+    document.querySelector(".menu-content ul").innerHTML += `
+      <li><a class="menu-nav" id="logout_btn" href="#" onclick="logout(this)">sair</a></li>
+    `;
+  }
+
+  function logout(el) {
+    localStorage.clear();
+    alert("Você saiu e está sendo redirecionado.");
+    window.location.pathname = "/";
+
+    el.innerHTML = "";
+  }
+</script>

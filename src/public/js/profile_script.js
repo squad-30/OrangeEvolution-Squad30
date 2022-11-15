@@ -1,4 +1,4 @@
-// ==== Verificando se id está no localStorage no momento do acesso a página para o caso de tentativa de acesso por meios não convencionais ====
+// ==== Verificando se o id está no localStorage no momento do acesso à página para o caso de tentativa de acesso por meios não convencionais ==== //
 
 // Id de usuário no LocalStorage
 const currentId = localStorage.getItem("user_id");
@@ -63,6 +63,7 @@ editNameBtn.addEventListener("click", () => {
   editNameInput.value = profileName.textContent;
 });
 editEmailBtn.addEventListener("click", () => {
+  // Mostrando e ocultando botões
   editEmailBtn.classList.add("hide");
   cancelEditEmailBtn.classList.remove("hide");
   confirmEditEmailBtn.classList.remove("hide");
@@ -76,6 +77,7 @@ editEmailBtn.addEventListener("click", () => {
 // Manipulando botões de cancelar edição
 
 cancelEditNameBtn.addEventListener("click", () => {
+  // Mostrando e ocultando botões
   cancelEditNameBtn.classList.add("hide");
   confirmEditNameBtn.classList.add("hide");
   editNameBtn.classList.remove("hide");
@@ -84,6 +86,7 @@ cancelEditNameBtn.addEventListener("click", () => {
   editNameInput.classList.add("hide");
 });
 cancelEditEmailBtn.addEventListener("click", () => {
+  // Mostrando e ocultando botões
   cancelEditEmailBtn.classList.add("hide");
   confirmEditEmailBtn.classList.add("hide");
   editEmailBtn.classList.remove("hide");
@@ -109,7 +112,7 @@ confirmEditNameBtn.addEventListener("click", () => {
       email: email,
       password: password
     })
-    .then((response) => {
+    .then(() => {
       setTimeout(() => {
         alert("Usuário atualizado com sucesso.");
       }, 150);
@@ -240,14 +243,4 @@ editPasswordBtn.addEventListener("click", () => {
   } else {
     alert("As senhas não batem.");
   }
-});
-
-// ========== LOGOUT BUTTON ==========
-
-const logoutBtn = document.querySelector("#logout_btn");
-
-logoutBtn.addEventListener("click", () => {
-  localStorage.clear();
-  alert("Você saiu e está sendo redirecionado.");
-  window.location.pathname = '/';
 });

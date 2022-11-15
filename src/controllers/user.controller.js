@@ -61,22 +61,14 @@ export class UserController {
   }
 
   static async delete(req, res) {
-    const { user_id, password } = req.body;
+    const { user_id } = req.body;
     const user = await UserRepository.getUserById(user_id);
 
-    if (!user) {
-      res.status(404).json({ msg: "Usuário não existe" });
-    }
+    UserContentRepository.deleteUserContentByUserId(user_id);
+    UserPathRepository.deleteUserPathByUserId(user_id);
+    UserRepository.deleteUserById(user_id);
 
-    if (password === user.password) {
-      UserContentRepository.deleteUserContentByUserId(user_id);
-      UserPathRepository.deleteUserPathByUserId(user_id);
-      UserRepository.deleteUserById(user_id);
-
-      return res.status(200).json({ msg: "Usuário excluído com sucesso." });
-    }
-
-    return res.status(404).json({ msg: "Senha incorreta." });
+    return res.status(200).json({ msg: "Usuário excluído com sucesso." });    
   }
 
   static async changePassword(req, res) {

@@ -54,12 +54,18 @@ nav a:hover {
     color: #002140;
 }
 
+input {
+    color: black;
+}
+
 /* -------------- MAIN --------------------*/
 
 #main {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin-top: 40px;
 }
 
 #content-header {

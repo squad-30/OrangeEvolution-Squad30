@@ -1,0 +1,170 @@
+<footer id="footer-content">
+  <div class="footer-content-1">
+    <figure class="logo-fcamara">
+      <img src="./imgs/logo-fcamara.png" alt="logo fcamara" />
+    </figure>
+    <p class="footer-content-1-text">
+      &copy; 2022 FCamara Formação e Consultoria.<br />
+      Todos os direitos reservados.
+    </p>
+  </div>
+
+  <div id="footer-content-2">
+    <div>
+      <p class="footer-content-2-header">Mapa do site</p>
+    </div>
+    <nav>
+      <ul>
+        <li class="footer-content-2-link">
+          <a class="footer-content-2-a" href="/">Home</a>
+        </li>
+        <li class="footer-content-2-link">
+          <a class="footer-content-2-a" href="/about">Sobre</a>
+        </li>
+        <li class="footer-content-2-link">
+          <a class="footer-content-2-a" href="">Página Principal</a>
+        </li>
+        <li class="footer-content-2-link">
+          <a class="footer-content-2-a" href="">Perfil</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div id="footer-content-3">
+    <p class="footer-content-3-header">Onde Estamos</p>
+
+    <div id="footer-locations">
+      <div id="footer-location-1">
+        <p class="footer-endress-1">Matriz</p>
+        <p class="footer-endress-1">
+          Rua Bela Cintra, 996 - 2º andar Consolação, São Paulo - SP
+        </p>
+      </div>
+      <div id="footer-location-2">
+        <p class="footer-endress-2">Filial</p>
+        <p class="footer-endress-2">
+          Praça dos Expedicionários, 19 Sala 22 Gonzaga, Santos - SP
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* --------------- FOOTER -----------------------*/
+  #footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #949aa0;
+    padding: 2rem 6rem;
+    margin-top: 3rem;
+  }
+
+  .footer-content-1 {
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+  }
+
+  .logo-fcamara {
+    width: 240px;
+    height: 50px;
+  }
+
+  .logo-fcamara img {
+    width: 100%;
+  }
+
+  .footer-content-1-text {
+    color: #002140;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .footer-content-2-header {
+    color: #000000;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-content-2-link {
+    display: flex;
+    flex-direction: column;
+    padding: 0.1rem 0;
+    align-items: center;
+  }
+
+  .footer-content-2-a {
+    color: #000000;
+  }
+
+  .footer-content-3-header {
+    color: #000000;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+  }
+
+  #footer-locations {
+    display: flex;
+  }
+
+  #footer-location-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+  }
+
+  #footer-location-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+  }
+
+  .footer-endress-1,
+  .footer-endress-2 {
+    text-align: center;
+    color: #000000;
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: 940px) {
+    #footer-content {
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 6rem;
+      margin-top: 3rem;
+      gap: 40px;
+    }
+
+    .footer-content-1 {
+      align-items: center;
+      width: 330px;
+      margin-top: 1rem;
+    }
+
+    .footer-content-1-text {
+      font-size: 0.8rem;
+      margin-top: 0.6rem;
+      text-align: center;
+    }
+
+    #footer-locations {
+      flex-direction: column;
+    }
+
+    #footer-location-1 {
+      margin-top: 0.9rem;
+    }
+
+    #footer-location-2 {
+      padding: 1rem;
+    }
+  }
+</style>

@@ -4,29 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css"> 
-    <script src="js/script.js" defer></script>
-    <title>Orange Evolution</title>   
+
+    <title>Orange Evolution | Home</title>   
+    
+    <link rel="stylesheet" href="./css/home_styles.css" /> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
+    <script type="module" src="./js/home_script.js" defer></script>
 </head>
 
 <body>
     <!------- BACKGROUND ------>
 
     <!--foi colocada a imagem aqui no lugar de background-->
-    <img id="background" src="img/background-utilizado.jpg" alt="">
+    <img id="background" src="./imgs/background.png" alt="">
 
     <!----------------- MENU -->
 
-    <header id="menu">
-        <!--- menu la no top -->
-        <nav class="menu-content">
-            <ul>
-                <li><a class="menu-nav" href="index.html">home</a></li>
-                <li><a class="menu-nav" href="produtos.html">sobre</a></li>
-                <li><a class="menu-nav" id="open-modal" href="#">entrar</a></li> <!--Depois vou mudaar para o link-->
-            </ul>
-        </nav>
-    </header>
+    <%- include('./partials/header.ejs') %>
 
     <!-- -------------- MAIN ------------ -->
 
@@ -37,7 +32,7 @@
                 na tag img esse id porem no css nao estava estilizando pq estava como 
                 um seletor de class - ou seja nao tinha formatação da imagem-->
                 <figure id="content-header-img">
-                    <img src="img/logoevolution.png" alt="logo orange evolution">
+                    <img src="./imgs/logoevolution.png" alt="logo orange evolution">
                 </figure>
                 <div> <!-- mudei aqui para dentro do h1--> 
                     <h1 id="content-header-h1">Evolua sua carreira<br>na tecnologia</h1>
@@ -50,7 +45,7 @@
             <div class="card">
                 <div class="card-header">
                     <figure class="icon" id="header1"> <!--mudar para CARD-ICON-->
-                        <img src="img/icone-dev3.png" alt="icone full stack">
+                        <img src="./imgs/icone-dev3.png" alt="icone full stack">
                     </figure>
                     <h3 class="card-title" id="header2">Desenvolvedor<br>Full Stack</h3>
                 </div>
@@ -62,7 +57,7 @@
             <div class="card">
                 <div class="card-header">
                     <figure class="icon" id="header1">
-                        <img src="img/icone-ux3.png" alt="icone ux/ui designer">
+                        <img src="./imgs/icone-ux3.png" alt="icone ux/ui designer">
                     </figure>
                     <h3 class="card-title" id="header2">UX/UI<br>Designer</h3>
                 </div>
@@ -74,7 +69,7 @@
             <div class="card">
                 <div class="card-header">
                     <figure class="icon" id="header1">
-                        <img src="img/icone-qa3.png" alt="icone quality assurance">
+                        <img src="./imgs/icone-qa3.png" alt="icone quality assurance">
                     </figure>
                     <h3 class="card-title" id="header2">Quality Assurance<br>(QA)</h3>
                 </div>
@@ -92,77 +87,34 @@
 
     <!-- -------------- FOOTER ------------ --------------->
 
-    <footer id="footer-content">
-        <div class="footer-content-1">
-            <figure class="logo-fcamara">
-                <img src="img/logo-fcamara.png" alt="logo fcamara">
-            </figure>
-            <p class="footer-content-1-text" >&copy; 2022 FCamara Formação e Consultoria.<br>
-                Todos os direitos reservados.
-            </p>
-        </div>
-
-        <div id="footer-content-2">
-            <div>
-            <p class="footer-content-2-header">Mapa do site</p>
-            </div>
-            <nav>
-                <ul>
-                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Home</a></li>
-                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Sobre</a></li>
-                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Página Principal</a></li>
-                    <li class="footer-content-2-link"><a class="footer-content-2-a" href="#">Perfil</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <div id="footer-content-3">
-            <p class="footer-content-3-header">Onde Estamos</p>
-            <!-- tentativa de colocar em tabela -->
-
-            <div id="footer-locations">
-                <div id="footer-location-1">
-                        <p class="footer-endress-1">Matriz</p>
-                        <p class="footer-endress-1">Rua Bela Cintra, 996 - 2º andar Consolação, São Paulo - SP</p>
-                </div>
-                <div id="footer-location-2">
-                    <p class="footer-endress-2">Filial</p>
-                    <p class="footer-endress-2">Praça dos Expedicionários, 19 Sala 22 Gonzaga, Santos - SP</p>
-                </div>
-            </div>
-
-        </div>
-    </footer>
-
+    <%- include('./partials/footer.ejs') %>
+    
     <!---------------- MODAL -------------------->
     <section>
-        <!-- faz o fundo ficar opaco-->
         <div id="fade" class="hide"></div> 
         
-        <!--aqui entra o modal-->
         <div id="modal" class="hide">
             <div class="modal-header">
-                <!-- botao fechar -->
                 <button id="close-modal">&#10006;</button> 
             </div>
             <div class="modal-body">
                 <form class="modal-form" action="#" >
                     <label for="email">Email *</label>
-                    <input type="text" placeholder="Digite seu email" required>
+                    <input type="email" id="email" required>
         
-                    <label for="pass">Senha *</label>
-                    <input type="password" placeholder="Digite sua senha">
+                    <label for="password">Senha *</label>
+                    <input type="password" id="password" />
         
                     <p class="modal-form-p">* Itens obrigatórios</p>
         
                     <div id="modal-btn">
-                        <button class="form-btn" id="form-btn-cad" >Cadastrar</button>
-                        <button class="form-btn" id="form-btn-login" type="submit">Entrar</button>
+                        <button class="form-btn" id="form-btn-cad"  type="button">Cadastrar</button>
+                        <button class="form-btn" id="form-btn-login">Fazer Login</button>
                     </div>
                 </form>
             </div>    
         </div> 
-    </section>
+    </section> 
 
 </body>
 </html>
