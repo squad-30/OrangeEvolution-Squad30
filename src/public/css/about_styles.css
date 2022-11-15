@@ -30,6 +30,7 @@ input {
     align-items: center;
     justify-content: center;
     gap: 50px;
+
     padding: 0 10%;
 }
 
@@ -45,6 +46,7 @@ input {
 
 .about-content-img {
     width: 450px;
+    min-width: 200px;
 } 
 
 .about-content-img img {
@@ -62,7 +64,7 @@ input {
     font-family: 'Bowlby One', monospace;
     color: #002140;
     font-size: 1.7rem;
-    padding-bottom: 3rem;  
+    margin-block: 60px;
 }
 
 #about-h2 {
@@ -112,7 +114,7 @@ input {
 
 /* ============ RESPONSIVO ============ */
 
-@media screen and (max-width: 940px) {
+@media (max-width: 940px) {
 
     /* ============ MAIN ============ */
 
@@ -131,6 +133,10 @@ input {
         flex-direction: column-reverse;
         gap: 20px;
         padding: 2rem;
+    }
+
+    #about-h1 {
+        margin-bottom: 0;
     }
 
     .about-content-img {
@@ -162,5 +168,46 @@ input {
         font-size: 1.1rem; 
     }    
     
+}
+
+@media (max-width: 400px) {
+    #about-h1 {
+        font-size: 1.5rem;
+    }
+
+    .about-content-img {
+        width: 100px;
+    }
+
+    .about-content-text p {
+        font-size: .9rem;
+    }
+
+    #about-h2 {
+        font-size: 1.2rem;
+    }
+
+    #about-h4 {
+        font-size: 1rem;
+    }
+
+    .about-list {
+        font-size: 1rem;
+        line-height: 2.2rem;
+    }
+
+    #about-h3 {
+        font-size: 1rem; 
+    }    
+
+    #icons  {
+        justify-content: center;
+        
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+    }
 }
 

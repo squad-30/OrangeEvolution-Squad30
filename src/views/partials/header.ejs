@@ -38,7 +38,7 @@
     font-weight: bold;
     cursor: pointer;
   }
-  
+
   li {
     display: inline-block;
   }
@@ -168,7 +168,7 @@
     top: 0;
   }
 
-  @media screen and (max-width: 940px) {
+  @media (max-width: 940px) {
     #menu {
       justify-content: center;
       text-align: center;
@@ -181,8 +181,14 @@
     }
 
     .menu-nav {
-      margin-left: 0;
-      margin: 1rem;
+      margin-inline: 10px;
+    }
+
+    @media (max-width: 420px) {
+      .menu-nav {
+        font-size: 14px;
+        margin-inline: 3px;
+      }
     }
   }
 </style>

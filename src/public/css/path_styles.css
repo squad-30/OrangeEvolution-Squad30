@@ -403,6 +403,12 @@ ul li {
   .video-container {
     margin-right: 0;
   }
+
+  .cta {
+    height: 50px;
+    width: 325px;
+    font-size: 25px;
+  }
 }
 
 @media (max-width: 425px) {

@@ -70,6 +70,7 @@
   .logo-fcamara {
     width: 240px;
     height: 50px;
+    margin: 0 40px 20px 40px;
   }
 
   .logo-fcamara img {
@@ -83,6 +84,7 @@
   }
 
   .footer-content-2-header {
+    text-align: center;
     color: #000000;
     font-weight: bold;
     display: flex;
@@ -133,8 +135,9 @@
     font-size: 1rem;
   }
 
-  @media screen and (max-width: 940px) {
+  @media (max-width: 940px) {
     #footer-content {
+      text-align: center;
       flex-direction: column;
       align-items: center;
       padding: 1rem 6rem;
@@ -164,6 +167,33 @@
 
     #footer-location-2 {
       padding: 1rem;
+    }
+
+    @media (max-width: 400px) {
+      .logo-fcamara {
+        width: 200px;
+        height: 30px;
+      }
+
+      .footer-content-1 {
+        width: 200px;
+      }
+
+      .footer-content-3 {
+        text-align: center;
+      }
+
+    .footer-content-3-header,
+     .footer-endress-1,
+     .footer-endress-2
+     {
+      font-size: 14px;
+    }
+
+    .footer-endress-1,
+     .footer-endress-2 {
+      width: 200px;
+     }
     }
   }
 </style>
