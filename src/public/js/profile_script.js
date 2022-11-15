@@ -15,7 +15,6 @@ const openModalButton = document.querySelector("#open-modal");
 if(localStorage.length !== 0) {
   openModalButton.innerHTML = "Perfil";
   openModalButton.setAttribute("href", "/profile");
-  openModalButton.removeEventListener("click", () => toggleModal());
 }
 
 // ========== INSERINDO DADOS DO USUÁRIO NA TELA ==========

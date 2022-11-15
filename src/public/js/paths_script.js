@@ -6,6 +6,15 @@ if (!currentId) {
   window.location.pathname = "/";
 }
 
+// ========== TROCANDO BOTÃO DE ENTRAR PARA PERFIL ==========
+
+const openModalButton = document.querySelector("#open-modal");
+
+if(localStorage.length !== 0) {
+  openModalButton.innerHTML = "Perfil";
+  openModalButton.setAttribute("href", "/profile");
+}
+
 // =============== //
 
 const api = axios.create({
