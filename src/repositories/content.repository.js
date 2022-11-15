@@ -96,12 +96,4 @@ export class ContentRepository {
       module_id,
     ]);
   }
-
-  //lista conteúdos da trilha com infos dos módulos
-  static async getPathContent(module_id, path_id) {
-    return dao.all(
-      "SELECT content_id, content_title, content_description, author, type, length_min, link, module_title, path_title FROM content INNER JOIN module ON module.module_id=? INNER JOIN path ON path.path_id=?",
-      [module_id, path_id]
-    );
-  }
 }

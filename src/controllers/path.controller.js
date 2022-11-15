@@ -20,6 +20,14 @@ export class PathController {
     }
   }
 
+  static async getPath(req, res) {
+    const path_id = req.params.path_id;
+
+    const path = await PathRepository.getPathById(path_id);
+
+    return res.status(200).json(path);
+  }
+
   // atualiza título ou descrição da trilha
   static async updatePath(req, res) {
     const { path_id, path_title, path_description } = req.body;

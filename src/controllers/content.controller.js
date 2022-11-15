@@ -25,22 +25,13 @@ export class ContentController {
     }
     // erro para baixo v
 
-    let data = [];
-    modules.some(async (mod) => {
-      // consulta os conteúdos do modulo
-      const moduleContent = await ContentRepository.getModuleContent(
-        mod.module_id
-      );
+    const data = new Array();
+    for (let module of modules) {
+      const con = await ContentRepository.getModuleContent(module.module_id);
+      data.push(con);
+    }
 
-      if (moduleContent) {
-        const content = await ContentRepository.getPathContent(
-          mod.module_id,
-          path.path_id
-        );
-        data.push(content);
-      }
-      return res.status(200).json(data);
-    });
+    return res.status(200).json(data);
   }
 
   // cria conteúdo
@@ -152,5 +143,13 @@ export class ContentController {
     return res.status(200).json({
       msg: "Conteúdo excluído com sucesso.",
     });
+  }
+
+  static async getContentById(req, res) {
+    console.log(req.body);
+    const content_id = req.body.content_id;
+    const content = await ContentRepository.getContentById(content_id);
+
+    res.status(200).json(content);
   }
 }

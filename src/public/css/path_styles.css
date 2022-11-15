@@ -1,0 +1,457 @@
+* {
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: #f5f5f5;
+
+  font-size: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0 !important;
+}
+
+ul li {
+  list-style: none;
+}
+
+.content {
+  max-width: 100vw;
+}
+
+.main-section {
+  display: flex;
+  justify-content: center;
+}
+
+.content-section {
+  flex: 1;
+  max-width: 1440px;
+  padding: 0 113px 0 113px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-container {
+  max-width: 1206px;
+}
+
+.path-title {
+  font-size: 46px;
+}
+
+.content-container {
+  max-width: 1206px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.line-container {
+  display: flex;
+  justify-content: center;
+}
+
+.line-wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  padding: 0 124px 0 102px;
+  overflow: hidden;
+}
+
+.line {
+  background: #000000;
+  width: 1206px;
+  height: 3px;
+  margin-top: 57px;
+}
+
+.accordion-body-active {
+  background: #ccc;
+}
+
+.edit-icon {
+  width: 21px;
+  height: 21px;
+  stroke: #002140;
+}
+
+.title-edit-icon {
+  stroke: #002140;
+  cursor: pointer;
+}
+
+.edit-icon.active {
+  stroke: #ffffff;
+}
+
+.admin-button {
+  background: #ff3200;
+  color: #ffffff;
+  font-size: 20px;
+  border: 0;
+  border-radius: 10px;
+  font-family: "Montserrat";
+  cursor: pointer;
+  height: 35px;
+  width: 264px;
+  margin-top: 19px;
+}
+
+.admin-button:hover {
+  background: #ff7823;
+}
+
+.textbox {
+  font-family: "Montserrat";
+  font-size: 18px;
+  color: #002140;
+  border-radius: 5px;
+  height: 25px;
+  width: 200px;
+}
+
+.textbox-title {
+  font-family: "Bowlby One";
+  font-size: 24px;
+  color: #002140;
+  border: 2px solid #002140;
+  border-radius: 5px;
+  height: 40px;
+  width: 240px;
+  margin-bottom: 5px;
+}
+
+.cta-container {
+  display: flex;
+  justify-content: center;
+  max-width: 100vw;
+  margin: auto;
+}
+
+.cta {
+  background: #ff3200;
+  color: #ffffff;
+  height: 100px;
+  width: 425px;
+  border: 0;
+  border-radius: 30px;
+  margin: 53px 0 33px 0;
+  cursor: pointer;
+  font-family: "Montserrat";
+  font-size: 40px;
+  box-shadow: 0px 4px 4px 7px rgba(0, 0, 0, 0.25);
+}
+
+.cta:hover {
+  background: #ff7823;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 396px;
+  max-height: 400px;
+  display: flex;
+  justify-content: left;
+}
+
+.progress-bar-container {
+  margin-top: 22px;
+}
+
+.bar-front {
+  max-width: 356px;
+  background: #ff3200;
+  width: 0px;
+  overflow: hidden;
+}
+
+.bar-behind {
+  background: #fff;
+  width: 356px;
+  max-height: 27px;
+  border: 2px solid #000;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.percent-text {
+  font-family: montserrat;
+  padding-left: 36px;
+  max-width: 356px;
+  font-size: 15px;
+  color: white;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  background: #f5f5f5;
+}
+
+.intro {
+  display: flex;
+}
+
+.typing {
+  position: relative;
+}
+
+.typing::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 95%;
+  border-right: 2px solid black;
+  right: -5px;
+  animation: blink 1s infinite ease;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.accordion {
+  max-width: 376px;
+  margin: 0 auto;
+  font-family: "Montserrat";
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  width: 100%;
+  background: #949aa0;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #aaaaaa;
+  color: #f3f3f3;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 24px;
+  color: #002140;
+  overflow: hidden;
+}
+
+.accordion-header.active {
+  background-color: #002140;
+  color: #ffffff;
+}
+
+.accordion-header i {
+  transition: all 0.3s ease-in-out;
+  padding: 0 0.5rem;
+}
+
+.accordion-header.active i {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  display: flex;
+  gap: 20px;
+
+  background-color: #f3f3f3;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.accordion-body:hover {
+  background-color: #ddd;
+}
+
+.accordion-body.active {
+  max-height: 10rem;
+  /* padding: 1rem; */
+}
+
+.checkbox-container {
+  flex-grow: 3;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkbox {
+  margin: 15px 10px 15px 0px;
+}
+
+p {
+  color: #002140;
+  padding: 10px 0;
+}
+
+.mainsection {
+  display: flex;
+  margin-top: 10px;
+  column-gap: 30px;
+}
+
+.path-title {
+  color: #002140;
+  font-family: "Bowlby One", sans-serif;
+  font-size: 46px;
+  margin-top: 50px;
+}
+
+.accordion-container {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+/* provisório */
+strong {
+  font-family: Montserrat;
+  max-width: 260px;
+  padding-left: 7px;
+  text-align: left;
+}
+
+/* width */
+.accordion-container::-webkit-scrollbar {
+  width: 13px;
+}
+
+/* Track */
+.accordion-container::-webkit-scrollbar-track {
+  background: #fff9f9;
+  border-radius: 15px;
+}
+
+/* Handle */
+.accordion-container::-webkit-scrollbar-thumb {
+  background: #8f8787;
+}
+
+/* Handle on hover */
+.accordion-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.video-container {
+  flex: 1;
+  max-width: 800px;
+  margin-right: 19px;
+}
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+ul li {
+  list-style: none;
+}
+
+@media (max-width: 834px) {
+  .title-edit-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .content-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .right-content-container {
+    align-items: center;
+  }
+  .path-title {
+    font-size: 24px;
+  }
+
+  .video-container {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .path-title {
+    padding-left: 10px;
+  }
+
+  .content-container {
+    flex-direction: column;
+  }
+
+  .content-section {
+    padding: 0;
+  }
+
+  .line-wrapper {
+    padding: 0;
+  }
+  .line {
+    max-width: 100%;
+  }
+
+  .cta {
+    width: 306px;
+    height: 72px;
+    font-size: 24px;
+  }
+
+  p {
+    padding-left: 5px;
+  }
+
+  .accordion-conteiner {
+    max-width: 100vw;
+  }
+  .accordion {
+    max-width: 100vw;
+    margin: 0;
+  }
+
+  .responsive-iframe {
+    width: 100vw;
+  }
+
+  .progress-bar-container {
+    max-width: 100vw;
+  }
+
+  .bar-behind {
+    margin-right: 5px;
+  }
+}

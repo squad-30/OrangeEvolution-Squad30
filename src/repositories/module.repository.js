@@ -14,11 +14,6 @@ export class ModuleRepository {
     return dao.get("SELECT * FROM module WHERE module_id=?", [module_id]);
   }
 
-  // busca modulos dentro da trilha
-  static async getModulesFromPath(path_id) {
-    return dao.all("SELECT * FROM module WHERE module_path_id=?", [path_id]);
-  }
-
   // busca modulo dentro da trilha por titulo
   static async getModuleFromPathByTitle(title, path_id) {
     return dao.get(

@@ -25,6 +25,14 @@ export class ModuleController {
     }
   }
 
+  static async getModule(req, res) {
+    const module_id = req.params.module_id;
+
+    const module = await ModuleRepository.getModuleById(module_id);
+
+    return res.status(200).json(module);
+  }
+
   // atualiza título ou descrição do módulo
   static async updateModule(req, res) {
     const { module_id, module_title, module_description, module_path_id } =

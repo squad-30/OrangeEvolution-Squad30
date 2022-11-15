@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/path_styles.css" />
+    <link rel="stylesheet" href="./css/profile_styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
 
     <title>Trilhas | Orange Evolution</title>
 
@@ -11,37 +23,15 @@
     <script type="module" src="./js/paths_script.js" defer></script>
   </head>
   <body>
-    <nav>
-      <button id="homeBtn">Home</button>
-      <button id="aboutBtn">Sobre</button>
-      <button id="profileBtn">Perfil</button>
-    </nav>
-
-    <br><br>
+    <%- include('./partials/header.ejs') %> 
     
-    <h2></h2>
-    <h1>Confira nossas trilhas</h1>
-    <p>(tudo temporário isso aqui)</p>
-    
-    <br>
-    
-    <div>
-      <h4>Trilha 1</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus omnis recusandae suscipit at natus magni quia iste maiores est, facere cupiditate? Eaque, cumque? Et assumenda vel nemo atque iste ratione.
-      </p>
+    <section class="content"></section>
+    <div class="cta-container">
+      <a href="#">
+        <button class="cta">Iniciar nova trilha</button>
+      </a>
     </div>
-    <div>
-      <h4>Trilha 3</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus omnis recusandae suscipit at natus magni quia iste maiores est, facere cupiditate? Eaque, cumque? Et assumenda vel nemo atque iste ratione.
-      </p>
-    </div>
-    <div>
-      <h4>Trilha 3</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus omnis recusandae suscipit at natus magni quia iste maiores est, facere cupiditate? Eaque, cumque? Et assumenda vel nemo atque iste ratione.
-      </p>
-    </div>
+  </div>
+    <%- include('./partials/footer.ejs')%>
   </body>
 </html>

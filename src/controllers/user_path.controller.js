@@ -13,7 +13,7 @@ export class UserPathController {
       user_path_path_id
     );
 
-    modules.some(async (mod) => {
+    modules.map(async (mod) => {
       const module = await ModuleRepository.getModuleById(mod.module_id);
       const moduleContent = await ContentRepository.getModuleContent(
         module.module_id

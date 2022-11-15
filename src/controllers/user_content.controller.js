@@ -14,14 +14,13 @@ export class UserContentController {
   }
 
   static async updateUserContentStatus(req, res) {
-    const {
-      user_content_id,
+    const { user_content_user_id, user_content_content_id, status } = req.body;
+
+    UserContentRepository.updateUserContentStatus(
       user_content_user_id,
       user_content_content_id,
-      status,
-    } = req.body;
-
-    UserContentRepository.updateUserContentStatus(user_content_id, status);
+      status
+    );
 
     let content = await ContentRepository.getContentById(
       user_content_content_id

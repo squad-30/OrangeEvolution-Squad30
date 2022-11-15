@@ -68,7 +68,7 @@ export class UserController {
     UserPathRepository.deleteUserPathByUserId(user_id);
     UserRepository.deleteUserById(user_id);
 
-    return res.status(200).json({ msg: "Usuário excluído com sucesso." });    
+    return res.status(200).json({ msg: "Usuário excluído com sucesso." });
   }
 
   static async changePassword(req, res) {
@@ -76,32 +76,15 @@ export class UserController {
     let user = await UserRepository.getUserByEmail(email);
 
     if (user.email === email && user.password === password) {
-     UserRepository.updateUser(user_id, name, email, new_password);
+      UserRepository.updateUser(user_id, name, email, new_password);
 
-      return res.status(200).json({ msg: "Senha alterada com sucesso!"});
+      return res.status(200).json({ msg: "Senha alterada com sucesso!" });
     }
 
-      return res.status(404).json({msg: "Senha atual informada está incorreta!"});
+    return res
+      .status(404)
+      .json({ msg: "Senha atual informada está incorreta!" });
   }
-  
-  /*
-  static async checkToken(req, res, next) {
-    const authHeader = req.headers["token"];
-    const token = authHeader && authHeader.split(" ")[1];
-
-    if (!token) {
-      return res.status(401).json({ msg: "Acesso negado." });
-    }
-
-    try {
-      const secret = process.env.SECRET;
-      jwt.verify(token, secret);
-    } catch (error) {
-      res.status(400).json({ msg: "Token inválido." });
-    }
-    next();
-  }
-  */
 
   static async getUserById(req, res) {
     const user_id = req.params.user_id;
@@ -125,10 +108,7 @@ export class UserController {
     const token = req.body.token;
     const secret = process.env.SECRET;
 
-    const verify = jwt.verify(
-      token,
-      secret
-    );
+    const verify = jwt.verify(token, secret);
 
     return res.status(200).json(verify);
   }
