@@ -1,3 +1,5 @@
+// ========== MODAL DE LOGIN ==========
+
 const openModalButton = document.querySelector("#open-modal");
 const closeModalButton = document.querySelector("#close-modal");
 const modal = document.querySelector("#modal");
@@ -7,17 +9,20 @@ const toggleModal = () => {
   [modal, fade].forEach((el) => el.classList.toggle("hide"));
 };
 
-[openModalButton, closeModalButton, fade].forEach((el) => {
-  el.addEventListener("click", () => toggleModal());
-});
+if(localStorage.length == 0) {
+  [openModalButton, closeModalButton, fade].forEach((el) => {
+    el.addEventListener("click", () => toggleModal());
+  });
+}
+
+// ========== TROCANDO BOTÃO DE ENTRAR PARA PERFIL ==========
 
 if(localStorage.length !== 0) {
     openModalButton.innerHTML = "Perfil";
-    openModalButton.removeEventListener("click", () => toggleModal());
     openModalButton.setAttribute("href", "/profile");
 }
 
-// FUNCIONALIDADE DE LOGIN
+// ========== FUNCIONALIDADE DE LOGIN ==========
 
 const api = axios.create({
   baseURL: "http://localhost:3000",
@@ -38,13 +43,11 @@ function login() {
         password: password,
       })
       .then((response) => {
-        console.log(response);
         alert(response.data.msg);
-        console.log(email + "" + password);
 
-        console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("email", email);
+
         const token = response.data.token;
 
         api
@@ -52,21 +55,18 @@ function login() {
             token: token,
           })
           .then((response) => {
-            console.log(response.data);
             localStorage.setItem("user_id", response.data.user_id);
-
             window.location.pathname = "/paths";
           });
       })
       .catch((error) => {
         alert("Email e/ou senha inválidos. Tente novamente.");
         console.log(error);
-        console.log(email + " " + password);
       });
   });
 }
 
-// FUNCIONALIDADE DE CADASTRO
+// ========== FUNCIONALIDADE DE CADASTRO ==========
 
 const registerModalBtn = document.querySelector("#form-btn-cad");
 
@@ -100,7 +100,7 @@ registerModalBtn.addEventListener("click", () => {
   const closeModalButton = document.querySelector("#close-modal");
   const cancelModalButton = document.querySelector("#form-btn-cancel");
 
-  registerBtn.addEventListener("click", function click() {
+  registerBtn.addEventListener("click", () => {
     const registerName = document.querySelector("#registerName").value;
     const registerEmail = document.querySelector("#registerEmail").value;
     const registerPassword = document.querySelector("#registerPassword").value;
@@ -112,7 +112,6 @@ registerModalBtn.addEventListener("click", () => {
         password: registerPassword,
       })
       .then((response) => {
-        console.log(response);
         alert(response.data.msg);
       })
       .catch((error) => {

@@ -8,6 +8,16 @@ if(!currentId) {
     window.location.pathname = '/';
 }
 
+// ========== TROCANDO BOTÃO DE ENTRAR PARA PERFIL ==========
+
+const openModalButton = document.querySelector("#open-modal");
+
+if(localStorage.length !== 0) {
+  openModalButton.innerHTML = "Perfil";
+  openModalButton.setAttribute("href", "/profile");
+  openModalButton.removeEventListener("click", () => toggleModal());
+}
+
 // ========== INSERINDO DADOS DO USUÁRIO NA TELA ==========
 
 const api = axios.create({
@@ -20,7 +30,6 @@ const profileEmail = document.querySelector(".profile_email span");
 
 api.get(`/api/user/${currentId}`)
 .then((response) => {
-  console.log(response);
   profileName.innerHTML = response.data.name;
   profileEmail.innerHTML = response.data.email;
 })

@@ -1,4 +1,4 @@
-// MODAL DE LOGIN
+// ========== MODAL DE LOGIN ==========
 
 const openModalButton = document.querySelector("#open-modal");
 const closeModalButton = document.querySelector("#close-modal");
@@ -6,20 +6,23 @@ const modal = document.querySelector("#modal");
 const fade = document.querySelector("#fade");
 
 const toggleModal = () => {
-    [modal, fade].forEach((el) => el.classList.toggle("hide"));
+  [modal, fade].forEach((el) => el.classList.toggle("hide"));
 };
 
-[openModalButton, closeModalButton, fade].forEach((el) => {
+if(localStorage.length == 0) {
+  [openModalButton, closeModalButton, fade].forEach((el) => {
     el.addEventListener("click", () => toggleModal());
-});
+  });
+}
+
+// ========== TROCANDO BOTÃO DE ENTRAR PARA PERFIL ==========
 
 if(localStorage.length !== 0) {
     openModalButton.innerHTML = "Perfil";
     openModalButton.setAttribute("href", "/profile");
-    openModalButton.removeEventListener("click", () => toggleModal());
 }
 
-// FUNCIONALIDADE DE LOGIN
+// ========== FUNCIONALIDADE DE LOGIN ==========
 
 const api = axios.create({
   baseURL: "http://localhost:3000",
@@ -29,46 +32,41 @@ login();
 
 function login() {
   const loginBtn = document.querySelector("#form-btn-login");
-  
+
   loginBtn.addEventListener("click", () => {
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-  
+
     api
       .post("/api/user/login", {
         email: email,
         password: password,
       })
       .then((response) => {
-        console.log(response);
         alert(response.data.msg);
-        console.log(email + "" + password);
-  
-        console.log(response.data.token);
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('email', email)
+
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("email", email);
+
         const token = response.data.token;
-        
-        api.post("/api/user/token", {
-          token: token
-        })
-        .then((response) => {
-          console.log(response.data);
-          localStorage.setItem('user_id', response.data.user_id);
-          
-          window.location.pathname = "/paths";
-        });
+
+        api
+          .post("/api/user/token", {
+            token: token,
+          })
+          .then((response) => {
+            localStorage.setItem("user_id", response.data.user_id);
+            window.location.pathname = "/paths";
+          });
       })
       .catch((error) => {
         alert("Email e/ou senha inválidos. Tente novamente.");
         console.log(error);
-        console.log(email + " " + password);
       });
-  
   });
 }
 
-// FUNCIONALIDADE DE CADASTRO
+// ========== FUNCIONALIDADE DE CADASTRO ==========
 
 const registerModalBtn = document.querySelector("#form-btn-cad");
 
@@ -101,12 +99,12 @@ registerModalBtn.addEventListener("click", () => {
   const registerBtn = document.querySelector("#form-btn-register");
   const closeModalButton = document.querySelector("#close-modal");
   const cancelModalButton = document.querySelector("#form-btn-cancel");
-  
-  registerBtn.addEventListener("click", function click() {
+
+  registerBtn.addEventListener("click", () => {
     const registerName = document.querySelector("#registerName").value;
     const registerEmail = document.querySelector("#registerEmail").value;
     const registerPassword = document.querySelector("#registerPassword").value;
-  
+
     api
       .post("/api/user/", {
         name: registerName,
@@ -114,7 +112,6 @@ registerModalBtn.addEventListener("click", () => {
         password: registerPassword,
       })
       .then((response) => {
-        console.log(response);
         alert(response.data.msg);
       })
       .catch((error) => {
@@ -150,15 +147,14 @@ registerModalBtn.addEventListener("click", () => {
       login();
     });
   });
+});
 
-})
-
-// BOTÃO DE ACESSO ÀS TRILHAS
+// ========== BOTÃO DE ACESSO ÀS TRILHAS ==========
 
 const accessContentBtn = document.querySelector(".content-btn");
 
 accessContentBtn.addEventListener("click", () => {
-  if(localStorage.length !== 0) {
+  if (localStorage.length !== 0) {
     window.location.pathname = "/paths";
   } else {
     alert("Faça login!");
