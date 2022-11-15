@@ -7,23 +7,17 @@
 
     <title>Meu perfil</title>
 
-    <!-- Duas formas, porque uma é pra qnd estou mexendo com a api rodando, o backend, onde eu setei pra ele já entender o caminho vindo do public. O outro é normal, onde isso de ele entender q está vindo do public n rola, já q está no app.js, no backend -->
     <link rel="stylesheet" href="./css/profile_styles.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
     <script src="./js/profile_script.js" defer></script>
-    <!-- <link rel="stylesheet" href="../public/css/profile_styles.css" />
-    <script type="module" src="../public/js/profile_script.js" defer></script> -->
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
     
-    <!-- PERFIL -->
-
     <main>
       <header>
         <h1>Meu perfil</h1>
-        <!-- Se for rolar imagem, setar o alt dinamicamente a partir da req -->
         <img src="./imgs/foto_perfil.png" alt="" />
       </header>
       <div class="content">
@@ -132,7 +126,8 @@
       </div>
     </main>
 
-    <!-- MODALS -->
+    <!-- ============ MODAIS ============ -->
+
 
     <dialog id="edit_password_modal">
       <div class="close_btn_wrapper">

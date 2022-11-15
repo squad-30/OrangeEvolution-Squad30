@@ -1,122 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Orange Evolution</title>   
-    
-    <link rel="stylesheet" href="./css/about_styles.css"> 
-    
+    <title>Orange Evolution</title>
+
+    <link rel="stylesheet" href="./css/about_styles.css" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
     <script src="./js/about_script.js" defer></script>
-</head>
+  </head>
 
-<body>
-    <!---------------- HEADER -------------------->
-
+  <body>
     <%- include('./partials/header.ejs') %>
 
-    <!-- ------------- MAIN SOBRE --------------->
-
     <main id="main-content">
+      <h1 id="about-h1">Sobre nós</h1>
 
-        <h1 id="about-h1">Sobre nós</h1>
+      <section>
+        <div id="about-content">
+          <div class="about-content-text">
+            <p>
+              A tecnologia se tornou o grande universo de linguagens, frameworks
+              e novas ferramentas para o nosso cotidiano. Mas, existe algo que é
+              muito importante quando se decide se aventurar nesse mercado: o
+              aprendizado contínuo.
+            </p>
+            <br />
+            <p>
+              Pensando nisso, criamos a Orange Juice, um grande ecossistema que
+              busca aproximar os amantes da tecnologia interessados em ingressar
+              no mercado de TI.
+            </p>
+          </div>
+          <figure class="about-content-img">
+            <img src="./imgs/orange-juice.png" alt="" />
+          </figure>
+        </div>
+      </section>
 
-        <section>           
+      <h2 id="about-h2">A Orange Evolution</h2>
 
-            <div id="about-content">
-                <div class="about-content-text">
-                    <p>A tecnologia se tornou o grande universo de linguagens, 
-                    frameworks e novas ferramentas para o nosso cotidiano. 
-                    Mas, existe algo que é muito importante quando se decide 
-                    se aventurar nesse mercado: o aprendizado contínuo.
-                    </p>
-                    <br>
-                    <p> Pensando nisso, criamos a Orange Juice, um grande ecossistema 
-                    que busca aproximar os amantes da tecnologia interessados 
-                    em ingressar no mercado de TI.
-                    </p>
-                </div>
-                <figure class="about-content-img">
-                    <img src="./imgs/orange-juice.png" alt="">
-                </figure>
-            </div>
-        
-        </section>
+      <section id="about-content-list">
+        <h4 id="about-h4">Se você:</h4>
 
-        <h2 id="about-h2">A Orange Evolution</h2>
+        <div id="about-conteiner-list">
+          <ul>
+            <li class="about-list">
+              Procura conteúdo tech de qualidade e gratuito
+            </li>
+            <li class="about-list">
+              Está migrando de carreira para a área tech
+            </li>
+            <li class="about-list">
+              Sente que com o apoio de uma comunidade vitaminada irá se
+              desenvolver mais
+            </li>
+            <li class="about-list">
+              É protagonista da sua história e formação
+            </li>
+          </ul>
+        </div>
 
-        
-        
-        <section id="about-content-list">  
-        
-            <h4 id="about-h4">Se você:</h4>
+        <h3 id="about-h3">O Orange Evolution é para você, pode chegar!</h3>
+      </section>
 
-            <div id="about-conteiner-list">
-            <ul>
-                <li class="about-list">Procura conteúdo tech de qualidade e gratuito</li>
-                <li class="about-list">Está migrando de carreira para a área tech<img src="" alt=""></li>
-                <li class="about-list">Sente que com o apoio de uma comunidade vitaminada irá se desenvolver mais<img src="" alt=""></li>
-                <li class="about-list">É protagonista da sua história e formação<img src="" alt=""></li>
-            </ul>
-            </div>
-
-            <h3 id="about-h3">O Orange Evolution é para você, pode chegar!</h3>
-
-        </section>
-
-        
-        <section id="icons">
-            <div class="icon">
-                <a href=""><img src="./imgs/insta-icon.png" alt=""></a>
-            </div>
-            <div class="icon">
-                <a href=""><img src="./imgs/linkedin-icon.png" alt=""></a>
-            </div>
-            <div class="icon">
-                <a href=""><img src="./imgs/youtube-icon.png" alt=""></a>
-            </div>
-            <div class="icon">
-                <a href=""><img src="./imgs/twitter-icon.png" alt=""></a>
-            </div>
-        </section>
-
-
-        
+      <section id="icons">
+        <div class="icon">
+          <a href="https://instagram.com/orangejuicetech" target="_blank"
+            ><img src="./imgs/insta-icon.png" alt=""
+          /></a>
+        </div>
+        <div class="icon">
+          <a
+            href="https://linkedin.com/company/orangejuicetech/"
+            target="_blank"
+            ><img src="./imgs/linkedin-icon.png" alt=""
+          /></a>
+        </div>
+        <div class="icon">
+          <a href="https://youtube.com/orangejuicefc" target="_blank"
+            ><img src="./imgs/youtube-icon.png" alt=""
+          /></a>
+        </div>
+        <div class="icon">
+          <a href="https://twitter.com/orangejuicefc" target="_blank"
+            ><img src="./imgs/twitter-icon.png" alt=""
+          /></a>
+        </div>
+      </section>
     </main>
 
-    <!---------------- MODAL -------------------->
-    <section>
-        <div id="fade" class="hide"></div> 
-        
-        <div id="modal" class="hide">
-            <div class="modal-header">
-                <button id="close-modal">&#10006;</button> 
-            </div>
-            <div class="modal-body">
-                <form class="modal-form" action="#" >
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" required>
-        
-                    <label for="password">Senha *</label>
-                    <input type="password" id="password" />
-        
-                    <p class="modal-form-p">* Itens obrigatórios</p>
-        
-                    <div id="modal-btn">
-                        <button class="form-btn" id="form-btn-cad"  type="button">Cadastrar</button>
-                        <button class="form-btn" id="form-btn-login">Fazer Login</button>
-                    </div>
-                </form>
-            </div>    
-        </div> 
-    </section> 
+    <!-- ============ MODAL ============ -->
 
-    <!---------------- FOOTER -------------------->
+    <section>
+      <div id="fade" class="hide"></div>
+
+      <div id="modal" class="hide">
+        <div class="modal-header">
+          <button id="close-modal">&#10006;</button>
+        </div>
+        <div class="modal-body">
+          <form class="modal-form" action="#">
+            <label for="email">Email *</label>
+            <input type="email" id="email" required />
+
+            <label for="password">Senha *</label>
+            <input type="password" id="password" />
+
+            <p class="modal-form-p">* Itens obrigatórios</p>
+
+            <div id="modal-btn">
+              <button class="form-btn" id="form-btn-cad" type="button">
+                Cadastrar
+              </button>
+              <button class="form-btn" id="form-btn-login">Fazer Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <%- include('./partials/footer.ejs') %>
-
-</body>
+  </body>
 </html>

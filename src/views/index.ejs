@@ -1,120 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Orange Evolution | Home</title>   
-    
-    <link rel="stylesheet" href="./css/home_styles.css" /> 
-    
+    <title>Orange Evolution | Home</title>
+
+    <link rel="stylesheet" href="./css/home_styles.css" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"></script>
     <script type="module" src="./js/home_script.js" defer></script>
-</head>
+  </head>
 
-<body>
-    <!------- BACKGROUND ------>
-
-    <!--foi colocada a imagem aqui no lugar de background-->
-    <img id="background" src="./imgs/background.png" alt="">
-
-    <!----------------- MENU -->
+  <body>
+    <img id="background" src="./imgs/background.png" alt="" />
 
     <%- include('./partials/header.ejs') %>
 
-    <!-- -------------- MAIN ------------ -->
-
     <main id="main">
-        <!--mudar o nome da classe-->
-        <section id="content-header">
-                <!--coloquei dentro de uma tag figure para tratar imagem antes estava
-                na tag img esse id porem no css nao estava estilizando pq estava como 
-                um seletor de class - ou seja nao tinha formatação da imagem-->
-                <figure id="content-header-img">
-                    <img src="./imgs/logoevolution.png" alt="logo orange evolution">
-                </figure>
-                <div> <!-- mudei aqui para dentro do h1--> 
-                    <h1 id="content-header-h1">Evolua sua carreira<br>na tecnologia</h1>
-                </div>
-        </section>
+      <section id="content-header">
+        <figure id="content-header-img">
+          <img src="./imgs/logoevolution.png" alt="logo orange evolution" />
+        </figure>
+        <div>
+          <h1 id="content-header-h1">Evolua sua carreira<br />na tecnologia</h1>
+        </div>
+      </section>
 
-        <h2>Nossas trilhas disponíveis:</h2>
+      <h2>Nossas trilhas disponíveis:</h2>
 
-        <section id="content-trails">
-            <div class="card">
-                <div class="card-header">
-                    <figure class="icon" id="header1"> <!--mudar para CARD-ICON-->
-                        <img src="./imgs/icone-dev3.png" alt="icone full stack">
-                    </figure>
-                    <h3 class="card-title" id="header2">Desenvolvedor<br>Full Stack</h3>
-                </div>
-                <p class="card-text">O desenvolvedor full stack é o profissional 
-                    multitarefa que cobre várias frentes na área de TI, pois pode 
-                    trabalhar com diferentes linguagens
-                </p>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <figure class="icon" id="header1">
-                        <img src="./imgs/icone-ux3.png" alt="icone ux/ui designer">
-                    </figure>
-                    <h3 class="card-title" id="header2">UX/UI<br>Designer</h3>
-                </div>
-                <p class="card-text">O Designer UX UI é o responsável pela idealização 
-                    do produto ou serviço, experiência do usuário e pela parte visual 
-                    do site ou aplicativo
-                </p>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <figure class="icon" id="header1">
-                        <img src="./imgs/icone-qa3.png" alt="icone quality assurance">
-                    </figure>
-                    <h3 class="card-title" id="header2">Quality Assurance<br>(QA)</h3>
-                </div>
-                <p class="card-text">O QA busca garantir que o produto do cliente seja
-                    entregue em perfeitas condições, respeitando as qualidades 
-                    pretendidas pelo consumidor
-                </p>
-            </div>      
-        </section>
+      <section id="content-trails">
+        <div class="card">
+          <div class="card-header">
+            <figure class="icon" id="header1">
+              <img src="./imgs/icone-dev3.png" alt="icone full stack" />
+            </figure>
+            <h3 class="card-title" id="header2">
+              Desenvolvedor<br />Full Stack
+            </h3>
+          </div>
+          <p class="card-text">
+            O desenvolvedor full stack é o profissional multitarefa que cobre
+            várias frentes na área de TI, pois pode trabalhar com diferentes
+            linguagens
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <figure class="icon" id="header1">
+              <img src="./imgs/icone-ux3.png" alt="icone ux/ui designer" />
+            </figure>
+            <h3 class="card-title" id="header2">UX/UI<br />Designer</h3>
+          </div>
+          <p class="card-text">
+            O Designer UX UI é o responsável pela idealização do produto ou
+            serviço, experiência do usuário e pela parte visual do site ou
+            aplicativo
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <figure class="icon" id="header1">
+              <img src="./imgs/icone-qa3.png" alt="icone quality assurance" />
+            </figure>
+            <h3 class="card-title" id="header2">Quality Assurance<br />(QA)</h3>
+          </div>
+          <p class="card-text">
+            O QA busca garantir que o produto do cliente seja entregue em
+            perfeitas condições, respeitando as qualidades pretendidas pelo
+            consumidor
+          </p>
+        </div>
+      </section>
 
-        <!--colocar nome da separacao tbm?-->
-        <button class="content-btn">Acesse o conteúdo</button>
-
-    </main>   
-
-    <!-- -------------- FOOTER ------------ --------------->
+      <button class="content-btn">Acesse o conteúdo</button>
+    </main>
 
     <%- include('./partials/footer.ejs') %>
-    
-    <!---------------- MODAL -------------------->
-    <section>
-        <div id="fade" class="hide"></div> 
-        
-        <div id="modal" class="hide">
-            <div class="modal-header">
-                <button id="close-modal">&#10006;</button> 
-            </div>
-            <div class="modal-body">
-                <form class="modal-form" action="#" >
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" required>
-        
-                    <label for="password">Senha *</label>
-                    <input type="password" id="password" />
-        
-                    <p class="modal-form-p">* Itens obrigatórios</p>
-        
-                    <div id="modal-btn">
-                        <button class="form-btn" id="form-btn-cad"  type="button">Cadastrar</button>
-                        <button class="form-btn" id="form-btn-login">Fazer Login</button>
-                    </div>
-                </form>
-            </div>    
-        </div> 
-    </section> 
 
-</body>
+    <!-- ============ MODAL ============ -->
+
+    <section>
+      <div id="fade" class="hide"></div>
+
+      <div id="modal" class="hide">
+        <div class="modal-header">
+          <button id="close-modal">&#10006;</button>
+        </div>
+        <div class="modal-body">
+          <form class="modal-form" action="#">
+            <label for="email">Email *</label>
+            <input type="email" id="email" required />
+
+            <label for="password">Senha *</label>
+            <input type="password" id="password" />
+
+            <p class="modal-form-p">* Itens obrigatórios</p>
+
+            <div id="modal-btn">
+              <button class="form-btn" id="form-btn-cad" type="button">
+                Cadastrar
+              </button>
+              <button class="form-btn" id="form-btn-login">Fazer Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

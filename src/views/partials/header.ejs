@@ -50,7 +50,7 @@
     color: #002140;
   }
 
-  /* ---------------- MODAL -------------------*/
+  /* ============ MODAL ============ */
 
   #modal button {
     padding: 0.1rem 0.2rem;
@@ -98,6 +98,13 @@
     margin: 0.2rem 0;
   }
 
+  input {
+    color: #000;
+    padding: 14px;
+    border-radius: 9px;
+    border: none;
+  }
+
   #fade,
   #modal {
     transition: 0.5s;
@@ -141,6 +148,7 @@
   .modal-form {
     display: flex;
     flex-direction: column;
+    gap: 8px;
   }
 
   .modal-form-p {
@@ -178,11 +186,15 @@
 </style>
 
 <script>
+  // Verificando se tem alguém logado, para trocar o botão de logar pelo de acesso ao perfil
+
   if (localStorage.length !== 0) {
     document.querySelector(".menu-content ul").innerHTML += `
       <li><a class="menu-nav" id="logout_btn" href="#" onclick="logout(this)">sair</a></li>
     `;
   }
+
+  // Botão de Logout
 
   function logout(el) {
     localStorage.clear();

@@ -1,4 +1,5 @@
-/* font */
+/* ============ GLOBAL ============ */
+
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Montserrat&display=swap');
 
 * {
@@ -24,28 +25,6 @@ body {
     height: 100%;
 }
 
-/* -------------- MENU ------------------- */ 
-
-#menu {
-    background-color: #FF3200;
-    display: flex;
-    justify-content: center;
-    text-align: end;
-    padding: 0.8rem;
-    font-size: 1.2rem;
-}
-
-.menu-content {
-    width: 1030px;
-}
-
-.menu-nav {
-    margin-left: 2rem;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
 li {
     display: inline-block;
 }
@@ -58,7 +37,7 @@ input {
     color: black;
 }
 
-/* -------------- MAIN --------------------*/
+/* ============ MAIN ============ */ 
 
 #main {
     display: flex;
@@ -93,7 +72,6 @@ input {
     padding: 6rem;
 }
 
-
 h2 {
     font-size: 2.8rem;
     display: flex;
@@ -101,7 +79,7 @@ h2 {
     margin: 3rem 0;
 }
 
-/* --------------------- CARDS --------------------- */
+/* ============ CARDS ============ */
 
 #content-trails {
     display: flex;
@@ -114,7 +92,8 @@ h2 {
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: #FF3200;
+    background-color: #FF7823;
+    ;
     border-radius: 0.8rem;
     border: none;
     padding: 1rem;
@@ -171,7 +150,8 @@ h2 {
     padding: 1.2rem 6rem;
 }
 
-/* --------------- FOOTER -----------------------*/
+/* ============ FOOTER ============ */
+
 #footer-content {
     display: flex;
     justify-content: center;
@@ -252,7 +232,7 @@ h2 {
     font-size: 1rem;
 }
 
-/* ---------------- MODAL -------------------*/
+/* ============ MODAL ============ */
 
 button {
     padding: 0.1rem 0.2rem;
@@ -361,26 +341,11 @@ label {
     top: 0;
 }
 
+/* ============ RESPONSIVO ============ */
 
 @media screen and (max-width: 940px) {
 
-    /* ------------ MENU ------------------ */
-    #menu {
-        justify-content: center;
-        text-align: center;
-        font-size: 20px;
-        padding: 0.5rem;
-    }
-
-    .menu-content {
-        width: 100%;
-    }
-    .menu-nav {
-        margin-left: 0;
-        margin: 1rem;
-    }
-
-    /* --------------- MAIN ------------------ */
+    /* ============ MAIN ============ */
     
     #main {
         display: flex;
@@ -436,7 +401,7 @@ label {
         width: 230px;
     }
 
-    /* --------------- FOOTER ------------------ */
+    /* ============ FOOTER ============ */
 
     #footer-content {
         flex-direction: column;

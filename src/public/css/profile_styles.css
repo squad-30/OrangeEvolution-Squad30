@@ -13,7 +13,6 @@
 
   font-family: "Montserrat", sans-serif;
   color: #fff;
-  /* Talvez conflite com a color do header/footer. Nesse caso, aumentar a especificidade desses ou distribuir esse color para os elementos mesmo */
 }
 
 body {
@@ -50,7 +49,7 @@ input {
   display: none;
 }
 
-/* ===== MAIN ===== */
+/* ============ MAIN ============ */
 
 main {
   width: min(68.4rem, 80%);
@@ -164,7 +163,7 @@ main .buttons {
   background-color: #ff7823;
 }
 
-/* =====  MODALS ===== */
+/* ============ MODALS ============ */
 
 dialog::backdrop {
   background-color: rgb(0 0 0 / 0.5);
@@ -253,12 +252,10 @@ dialog #delete_account_modal .close_btn_wrapper {
   margin-top: 3.8rem;
 }
 
-/* =====  RESPONSIVE ===== */
-
-/* Conferir depois se isso aqui vai quebrar o header e o footer */
+/* ============  RESPONSIVO ============ */
 
 @media (max-width: 1327px) {
-  /* ===== MAIN ===== */
+  /* ============ MAIN ============ */
 
   main {
     min-height: 55rem;
@@ -300,7 +297,7 @@ dialog #delete_account_modal .close_btn_wrapper {
     font-size: 2.8rem;
   }
 
-  /* ===== MODALS ===== */
+  /* ============ MODALS ============ */
 
   dialog {
     width: min(70.2rem, 90%);
@@ -325,7 +322,7 @@ dialog #delete_account_modal .close_btn_wrapper {
 }
 
 @media (max-width: 1024px) {
-  /* ===== MAIN ===== */
+  /* ============ MAIN ============ */
 
   main {
     min-height: 50rem;
@@ -372,7 +369,7 @@ dialog #delete_account_modal .close_btn_wrapper {
     height: 3.1rem;
   }
 
-  /* ===== MODALS ===== */
+  /* ============ MODALS ============ */
 
   dialog {
     width: min(63.4rem, 90%);
@@ -410,7 +407,7 @@ dialog #delete_account_modal .close_btn_wrapper {
 }
 
 @media (max-width: 768px) {
-  /* ===== MAIN ===== */
+  /* ============ MAIN ============ */
 
   main {
     min-height: 45rem;
@@ -457,7 +454,7 @@ dialog #delete_account_modal .close_btn_wrapper {
     font-size: 2rem;
   }
 
-  /* ===== MODALS ===== */
+  /* ============ MODALS ============ */
 
   dialog {
     width: min(56.6rem, 90%);
@@ -485,7 +482,7 @@ dialog #delete_account_modal .close_btn_wrapper {
 }
 
 @media (max-width: 530px) {
-  /* ===== MAIN ===== */
+  /* ============ MAIN ============ */
 
   main {
     min-height: 38rem;
@@ -543,7 +540,7 @@ dialog #delete_account_modal .close_btn_wrapper {
     height: 2.6rem;
   }
 
-  /* ===== MODALS ===== */
+  /* ============ MODALS ============ */
 
   dialog {
     width: min(43rem, 90%);
@@ -576,7 +573,7 @@ dialog #delete_account_modal .close_btn_wrapper {
 }
 
 @media (max-width: 340px) {
-  /* ===== MAIN ===== */
+  /* ============ MAIN ============ */
 
   main {
     min-height: 30rem;
@@ -639,7 +636,7 @@ dialog #delete_account_modal .close_btn_wrapper {
     height: 2rem;
   }
 
-  /* ===== MODALS ===== */
+  /* ============ MODALS ============ */
 
   dialog {
     width: min(43rem, 90%);
@@ -685,7 +682,7 @@ dialog #delete_account_modal .close_btn_wrapper {
 }
 
 @media (max-width: 200px) {
-  /* ===== MAIN ===== */
+  /* ============ MAIN ============ */
     
   main {
     min-height: 20rem;
@@ -743,7 +740,7 @@ dialog #delete_account_modal .close_btn_wrapper {
     height: 1.6rem;
   }
 
-  /* ===== MODALS ===== */
+  /* ============ MODALS ============ */
 
   dialog {
     width: min(43rem, 95%);
