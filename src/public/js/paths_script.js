@@ -18,7 +18,7 @@ if(localStorage.length !== 0) {
 // =============== //
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: `https://orangeevolution-squad30.up.railway.app`,
 });
 
 // Para obter os dados do usuário
