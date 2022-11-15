@@ -25,7 +25,7 @@ if(localStorage.length !== 0) {
 // ========== FUNCIONALIDADE DE LOGIN ==========
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: `http://orangeevolution-squad30.up.railway.app`,
 });
 
 login();

@@ -30,7 +30,7 @@ app.use(userContentRouter);
 
 dao.setupDb(); // Cria tabelas do banco se não existir
 
-const PORT = 3000;
-app.listen(process.env.PORT || PORT, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log("API running");
 });

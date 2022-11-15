@@ -3,16 +3,16 @@
 // Id de usuário no LocalStorage
 const currentId = localStorage.getItem("user_id");
 
-if(!currentId) {
-    alert("Você não está logado.");
-    window.location.pathname = '/';
+if (!currentId) {
+  alert("Você não está logado.");
+  window.location.pathname = "/";
 }
 
 // ========== TROCANDO BOTÃO DE ENTRAR PARA PERFIL ==========
 
 const openModalButton = document.querySelector("#open-modal");
 
-if(localStorage.length !== 0) {
+if (localStorage.length !== 0) {
   openModalButton.innerHTML = "Perfil";
   openModalButton.setAttribute("href", "/profile");
   openModalButton.removeEventListener("click", () => toggleModal());
@@ -21,19 +21,20 @@ if(localStorage.length !== 0) {
 // ========== INSERINDO DADOS DO USUÁRIO NA TELA ==========
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: `http://orangeevolution-squad30.up.railway.app`,
 });
 
 // Tags para nome e email atuais
 const profileName = document.querySelector(".profile_name span");
 const profileEmail = document.querySelector(".profile_email span");
 
-api.get(`/api/user/${currentId}`)
-.then((response) => {
-  profileName.innerHTML = response.data.name;
-  profileEmail.innerHTML = response.data.email;
-})
-.catch((error) => console.log(error));
+api
+  .get(`/api/user/${currentId}`)
+  .then((response) => {
+    profileName.innerHTML = response.data.name;
+    profileEmail.innerHTML = response.data.email;
+  })
+  .catch((error) => console.log(error));
 
 // ========== EDITANDO DADOS DO USUÁRIO ==========
 
@@ -108,79 +109,79 @@ cancelEditEmailBtn.addEventListener("click", () => {
 
 confirmEditNameBtn.addEventListener("click", () => {
   const newName = editNameInput.value;
-  
-  api.get(`/api/user/${currentId}`)
-  .then((response) => {
+
+  api.get(`/api/user/${currentId}`).then((response) => {
     // Dados necessários para a requisição de edição
     const email = response.data.email;
     const password = response.data.password;
-    
-    api.put('/api/user/', {
-      user_id: currentId,
-      name: newName,
-      email: email,
-      password: password
-    })
-    .then(() => {
-      setTimeout(() => {
-        alert("Usuário atualizado com sucesso.");
-      }, 150);
-      // Escrevendo e armazenando novo nome com o sucesso
-      profileName.innerHTML = newName;
-      localStorage.setItem("name", newName);
-    })
-    .catch((error) => {
-      alert("Houve um erro. Tente novamente mais tarde.");
-      console.log(error);
-    })
-  })
+
+    api
+      .put("/api/user/", {
+        user_id: currentId,
+        name: newName,
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        setTimeout(() => {
+          alert("Usuário atualizado com sucesso.");
+        }, 150);
+        // Escrevendo e armazenando novo nome com o sucesso
+        profileName.innerHTML = newName;
+        localStorage.setItem("name", newName);
+      })
+      .catch((error) => {
+        alert("Houve um erro. Tente novamente mais tarde.");
+        console.log(error);
+      });
+  });
 
   // Removendo área input e mostrando o nome, agora atualizado
   cancelEditNameBtn.classList.add("hide");
   confirmEditNameBtn.classList.add("hide");
   editNameBtn.classList.remove("hide");
   profileName.classList.remove("hide");
-  editNameInput.classList.add("hide");  
-})
+  editNameInput.classList.add("hide");
+});
 
 // Editando email
 
 confirmEditEmailBtn.addEventListener("click", () => {
   const newEmail = editEmailInput.value;
-  
-  api.get(`/api/user/${currentId}`)
-  .then((response) => {
+
+  api.get(`/api/user/${currentId}`).then((response) => {
     // Dados necessários para a requisição de edição
     const name = response.data.name;
     const password = response.data.password;
-    
-    api.put('/api/user/', {
-      user_id: currentId,
-      name: name,
-      email: newEmail,
-      password: password
-    })
-    .then((response) => {
-      setTimeout(() => {
-        alert("Usuário atualizado com sucesso.");
-      }, 150);
-      // Escrevendo e armazenando novo email com o sucesso
-      profileEmail.innerHTML = newEmail;
-      localStorage.setItem("email", newEmail);
-    })
-    .catch((error) => {
-      alert("Houve um erro. Tente novamente mais tarde.");
-      console.log(error);
-    })
-  })
+
+    api
+      .put("/api/user/", {
+        user_id: currentId,
+        name: name,
+        email: newEmail,
+        password: password,
+      })
+      .then((response) => {
+        setTimeout(() => {
+          alert("Usuário atualizado com sucesso.");
+        }, 150);
+        // Escrevendo e armazenando novo email com o sucesso
+        profileEmail.innerHTML = newEmail;
+        localStorage.setItem("email", newEmail);
+      })
+      .catch((error) => {
+        alert("Houve um erro. Tente novamente mais tarde.");
+        console.log(error);
+      });
+  });
 
   // Removendo área input e mostrando o email, agora atualizado
   cancelEditEmailBtn.classList.add("hide");
   confirmEditEmailBtn.classList.add("hide");
   editEmailBtn.classList.remove("hide");
   profileEmail.classList.remove("hide");
-  editEmailInput.classList.add("hide");  
-})
+  editEmailInput.classList.add("hide");
+});
 
 // ========== MODALS ==========
 
@@ -202,7 +203,9 @@ const closeModalBtns = document.querySelectorAll("dialog .close_btn");
 const modalInputs = document.querySelectorAll("dialog input");
 
 // Funções para abertura dos modais
-openEditPasswordModalBtn.addEventListener("click", () => editPasswordModal.showModal());
+openEditPasswordModalBtn.addEventListener("click", () =>
+  editPasswordModal.showModal()
+);
 openDeleteAccountModalBtn.addEventListener("click", () =>
   deleteAccountModal.showModal()
 );
@@ -228,27 +231,32 @@ closeModalBtns.forEach((btn) =>
 const editPasswordBtn = document.querySelector("dialog .edit_button");
 
 editPasswordBtn.addEventListener("click", () => {
-  const currentPassword = document.querySelector("dialog #current_password").value;
+  const currentPassword = document.querySelector(
+    "dialog #current_password"
+  ).value;
   const newPassword = document.querySelector("dialog #new_password").value;
-  const newPasswordConfirmed = document.querySelector("dialog #confirm_new_password").value;
+  const newPasswordConfirmed = document.querySelector(
+    "dialog #confirm_new_password"
+  ).value;
 
-  if(newPassword === newPasswordConfirmed) {
-    api.put("/api/user/changepassword", {
-      user_id: currentId,
-      name: localStorage.getItem("name"),
-      email: localStorage.getItem("email"),
-      password: currentPassword,
-      new_password: newPassword
-    })
-    .then((response) => {
-      alert(response.data.msg);
-      editPasswordModal.close();
-      modalInputs.forEach((input) => (input.value = ""));
-    })
-    .catch((error) => {
-      console.error(error);
-      alert("Houve um erro. Tente novamente.")
-    });
+  if (newPassword === newPasswordConfirmed) {
+    api
+      .put("/api/user/changepassword", {
+        user_id: currentId,
+        name: localStorage.getItem("name"),
+        email: localStorage.getItem("email"),
+        password: currentPassword,
+        new_password: newPassword,
+      })
+      .then((response) => {
+        alert(response.data.msg);
+        editPasswordModal.close();
+        modalInputs.forEach((input) => (input.value = ""));
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Houve um erro. Tente novamente.");
+      });
   } else {
     alert("As senhas não batem.");
   }
