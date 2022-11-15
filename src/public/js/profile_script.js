@@ -21,7 +21,7 @@ if (localStorage.length !== 0) {
 // ========== INSERINDO DADOS DO USUÁRIO NA TELA ==========
 
 const api = axios.create({
-  baseURL: `http://orangeevolution-squad30.up.railway.app`,
+  baseURL: `https://orangeevolution-squad30.up.railway.app`,
 });
 
 // Tags para nome e email atuais

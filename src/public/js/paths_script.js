@@ -9,7 +9,7 @@ if (!currentId) {
 // =============== //
 
 const api = axios.create({
-  baseURL: `http://orangeevolution-squad30.up.railway.app`,
+  baseURL: `https://orangeevolution-squad30.up.railway.app`,
 });
 
 // Para obter os dados do usuário

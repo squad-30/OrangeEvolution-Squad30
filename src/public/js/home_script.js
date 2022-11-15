@@ -9,7 +9,7 @@ const toggleModal = () => {
   [modal, fade].forEach((el) => el.classList.toggle("hide"));
 };
 
-if(localStorage.length == 0) {
+if (localStorage.length == 0) {
   [openModalButton, closeModalButton, fade].forEach((el) => {
     el.addEventListener("click", () => toggleModal());
   });
@@ -17,15 +17,15 @@ if(localStorage.length == 0) {
 
 // ========== TROCANDO BOTÃO DE ENTRAR PARA PERFIL ==========
 
-if(localStorage.length !== 0) {
-    openModalButton.innerHTML = "Perfil";
-    openModalButton.setAttribute("href", "/profile");
+if (localStorage.length !== 0) {
+  openModalButton.innerHTML = "Perfil";
+  openModalButton.setAttribute("href", "/profile");
 }
 
 // ========== FUNCIONALIDADE DE LOGIN ==========
 
 const api = axios.create({
-  baseURL: `http://orangeevolution-squad30.up.railway.app`,
+  baseURL: `https://orangeevolution-squad30.up.railway.app`,
 });
 
 login();
