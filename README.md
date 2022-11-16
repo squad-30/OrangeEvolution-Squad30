@@ -1,11 +1,13 @@
 <h1>Orange Evolution - Squad30</h1> 
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=Netlify&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
+  <img src="./docs/projeto.png"/>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=Netlify&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/><br>
   <img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge"/>
   <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
 </p>
@@ -39,7 +41,7 @@
 ## Descrição do projeto :page_with_curl: 
 
 <p align="justify">
-  Plataforma de estudos que contribui na formação de profissionais. Onde alunos cadastrados tem acesso a conteúdos gratuitos de uma forma intuitiva e personalizável. 
+  Projeto desenvolvido na Hackathon do Programa de Formação Season 4 da FCamara. A aplicação é uma plataforma de estudos que contribui na formação de profissionais, a Orange Evolution. Onde alunos cadastrados tem acesso a conteúdos gratuitos de uma forma intuitiva e personalizável. 
 </p>
 
 ## Funcionalidades :heavy_check_mark:
@@ -101,6 +103,8 @@ Pronto, agora é possivel acessar a aplicação a partir da rota: https://localh
 
 ## Casos de uso :arrow_forward:
 
+<img src="./docs/projeto.gif" />
+
 Para acessar por favor usar os respectivos usuário e admistrador que foram previamente cadastrado no banco de dados.
 
 ### Usuário: 
@@ -114,6 +118,9 @@ Para acessar por favor usar os respectivos usuário e admistrador que foram prev
 |name|email|password|
 | -------- |-------- |-------- |
 |Lucyan|lucyan@lucyan.com|123456|
+
+<br>
+<img src="./docs/img/database-diagram.png" />
 
 ... 
 
