@@ -135,6 +135,6 @@ Para acessar por favor usar os respectivos usuário e admistrador que foram prev
 
 ## Licença :trophy:
 
-The [MIT License]() (MIT)
+The [MIT License](./LICENSE) (MIT)
 
 Copyright :copyright: 2022 - Orange Evolution - Squad30
