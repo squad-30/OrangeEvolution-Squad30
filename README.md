@@ -105,7 +105,7 @@ Pronto, agora é possivel acessar a aplicação a partir da rota: https://localh
 
 <img src="./docs/projeto.gif" />
 
-Para acessar por favor usar os respectivos usuário e admistrador que foram previamente cadastrado no banco de dados.
+É possível se cadastrar ou acessar com os respectivos usuário e admnistrador que foram previamente cadastrados no banco de dados.
 
 ### Usuário: 
 
@@ -119,7 +119,10 @@ Para acessar por favor usar os respectivos usuário e admistrador que foram prev
 | -------- |-------- |-------- |
 |Lucyan|lucyan@lucyan.com|123456|
 
-<br>
+...
+
+## Modelagem do banco de dados
+
 <img src="./docs/img/database-diagram.png" />
 
 ... 
