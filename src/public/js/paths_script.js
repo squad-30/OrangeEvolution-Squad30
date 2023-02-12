@@ -18,7 +18,7 @@ if(localStorage.length !== 0) {
 // =============== //
 
 const api = axios.create({
-  baseURL: `https://orangeevolution-squad30.up.railway.app`,
+  baseURL: `https://orange-evolution-squad-30.vercel.app`,
 });
 
 // Para obter os dados do usuário
