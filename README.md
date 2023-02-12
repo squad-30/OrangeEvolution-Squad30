@@ -105,7 +105,7 @@ Pronto, agora é possivel acessar a aplicação a partir da rota: https://localh
 
 <img src="./docs/projeto.gif" />
 
-É possível se cadastrar ou acessar com os respectivos usuário e admnistrador que foram previamente cadastrados no banco de dados.
+Por favor, acessar com os respectivos usuário e admnistrador que foram previamente cadastrados no banco de dados.
 
 ### Usuário: 
 
