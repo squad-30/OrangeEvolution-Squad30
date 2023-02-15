@@ -25,7 +25,7 @@ if (localStorage.length !== 0) {
 // ========== FUNCIONALIDADE DE LOGIN ==========
 
 const api = axios.create({
-  baseURL: `https://orange-evolution-squad-30.vercel.app`,
+  baseURL: `https://orangeevolution-squad30.up.railway.app`,
 });
 
 login();
